@@ -6,7 +6,7 @@ A Resting Place
 {
 	"ifid": "60C15F40-312E-4797-80C6-5FA092D050AC",
 	"format": "SugarCube",
-	"format-version": "2.36.1",
+	"format-version": "2.34.1",
 	"start": "landing",
 	"zoom": 0.6
 }
@@ -194,7 +194,7 @@ body{
   color:#fff;
   /* color:#000; */
   overflow:scroll;
-  background: #1c8f93;
+  background:#188081;
   /* padding: 1.5rem */
   display:flex;
   flex-direction: column
@@ -225,7 +225,7 @@ align-items: end;
   bottom: 0;
   padding: 2rem;
   width: 100%;
-background: #1c8f93;
+background: #188081;
 }
 
 nav{
@@ -515,7 +515,8 @@ setup.checkForRepeats = (array,element) => {
 
 
 :: footersimple {"position":"100,375","size":"100,100"}
-<footer><div class="nav-wrapper "><div class="nav-item"><<button "Replay">><<goto $passage>><</button>> </div><div class="nav-item"><<button "Back">><<goto $prevpass>><</button>></div></div><div class="nav-wrapper"><div class="nav-item"><<button "Take me to the end">><<goto "lost">><</button>></div></div></footer>
+<footer><div class="nav-wrapper "><div class="nav-item"><<button "<">><<goto $prevpass>><</button>></div><div class="nav-item"><<button "Replay">><<goto $passage>><</button>> </div></div><div class="nav-wrapper"><div class="nav-item"><<button "Take me to the end">><<goto "lost">><</button>></div></div></footer>
+
 
 :: footerlost {"position":"100,375","size":"100,100"}
 <footer><div class="nav-wrapper "><div class="nav-item"><<button "Back">><<goto $prevpass>><</button>></div></div></footer>
@@ -544,7 +545,6 @@ You have two options:
 </main>
 
 
-
 :: end {"position":"100,600","size":"100,100"}
 <main><<audio ":all" stop>><<set $endMap = setup.generateDirectionsMap([51.51510002285436, -0.1082076329674715],[51.51510002285436, -0.1082076329674715])>>
 
@@ -560,6 +560,7 @@ $endMap
 <div class="nav-item"><<button "Start again">><<goto "landing">><</button>></div>
 </footer>
 
+
 :: footer {"position":"99,493","size":"100,100"}
 <footer>
 <div class="nav-item back"><<button "<">><<goto $prevpass>><</button>></div>
@@ -572,46 +573,47 @@ $endMap
 :: RP-05 {"position":"454,195","size":"100,100"}
 <<set $passage to "RP-05">><<set $nextpassage to "RP-06">>
 <main><<audio ":all" stop>><<audio "RP_05" play>>
+  <div id="mount"></div>
+ <<timed 1s>><<replace "#mount">><<type 60ms>>[connecting...]<</type>><</replace>><</timed>>
+    <<timed 5s>><<replace "#mount">><<type 60ms>>[connecting...]<</type>><</replace>><</timed>>
+      <<timed 10s>><<replace "#mount">><<type 60ms>>[connecting...]<</type>><</replace>><</timed>>
+<<timed 13s>><<replace "#mount">><<type 55ms>>Sometimes when my boss gets in early, I like to come here for a few moments and look up at the monument and imagine the city on fire. 
 
+Two thirds of it blazing for three days.<</type>><</replace>><</timed>>   
+<<timed 30s>><<replace "#mount">><<type 55ms>>Not that I want that to happen. Of course not. I love London. 
 
-Sometimes when my bus gets in early, I like to come here for a few moments and look up at the Monument and imagine the City on fire.
-
-Two thirds of it, blazing for three days.
-
-Not that I want that to happen. Of course not. I love London. I never felt like I belonged at home. It’s not like I belong here either. It’s just that nobody belongs here so we all belong.
-
+I never felt like I belonged at home. It's not like I belong here either. It's just that nobody belongs here. So we all belong.<</type>><</replace>><</timed>> 
+<<timed 45s>>
 <div class = "menu-wrapper">
 <<button "I know what you mean">><<set $prevpass to $passage>><<goto "RP-06">><</button>>
 
 <<button "That’s not how I see it">><<set $prevpass to $passage>><<goto "RP-06">><</button>>
 </div>
-
+<</timed>>
 </main>
 <<include "footer">>
 
 
 :: RP-06 {"position":"454,323","size":"100,100"}
 <<set $passage to "RP-06">><<set $nextpassage to "RP-07">><<audio ":all" stop>><<audio "RP_06" play>><<set $map1 = setup.generateDirectionsMapWP([51.51029183629383, -0.08606857296172754],[51.51035944551418, -0.0871975864519973], "London Bridge")>>
-<main>Yeah well.
+<main>
+  <div id="mount"></div>
+    
+<<timed 0s>><<replace "#mount">><<type 55ms>>Yeah, well, I can't imagine what the city looked like before the fire. 
 
-I can’t imagine what the city looked like before the fire.
+All the buildings and monuments that say London to me were built straight after. Like this one.<</type>><</replace>><</timed>>    
+<<timed 14s>><<replace "#mount">><<type 55ms>>But sure, there was a city before that. 
 
-All the buildings and monuments that say London to me were built straight after. Like this one.
+When London Bridge had houses and shops on it, and one before that, Londinium. 
 
-But sure there was a city before that, when London Bridge had houses
-and shops on it, and one before that: Londinium. What would I recognise of that if I had a time machine?
+What would I recognize of that if I had a time machine?<</type>><</replace>><</timed>>    
+<<timed 28s>><<replace "#mount">><<type 50ms>>Anyway, we'd better get moving. I'll be late for work.<</type>><</replace>><</timed>>    
+<<timed 33s>><<replace "#mount">><<type 50ms>>With the Church of St. Magnus the martyr (another of Wren's) on my left, I walk away from the monument on Monument Street, not taking my life into my own hands with the traffic of King William Street, but diligently walking over to the pedestrian crossing.<</type>><</replace>><</timed>>    
+<<timed 50s>><<replace "#mount">><<type 50ms>>Once across, I go left and then take a sharp right onto Arthur Street, which is almost a circle.<</type>><</replace>><</timed>> 
 
-Anyway, we’d better get moving. I’ll be late for work.
+<<timed 60s>><<replace "#mount">>$map1
 
-With the church of St Magnus the Martyr (another of Wren’s) on my
-left, I walk away from the Monument on Monument Street, not taking my
-life into my own hands with the traffic of King William Street but diligently walking over to the pedestrian crossing.
-
-Once across, I go left and then take a sharp right onto Arthur Street, which is almost a circle. 
-
-$map1
-
-<<button "At Arthur Street">><<set $prevpass to $passage>><<goto "RP-07">><</button>>
+<<button "At Arthur Street">><<set $prevpass to $passage>><<goto "RP-07">><</button>><</replace>><</timed>> 
      
 
 </main>
@@ -620,25 +622,24 @@ $map1
 
 :: RP-07 {"position":"455,445","size":"100,100"}
 <<set $passage to "RP-07">><<set $nextpassage to "RP-08">><<audio ":all" stop>><<audio "RP_07" play>><<set $map2 = setup.generateDirectionsMap([51.51035944551418, -0.0871975864519973], [51.51116071917635, -0.08949355746559208])>>
-<main>$map2
+<main> <div id="mount"></div>
+  
+<<timed 0s>><<replace "#mount">><<type 50ms>>Another right onto Martin lane, then pass under the street lamp to Lawrence Pountney Hill. <</type>><</replace>><</timed>>    
+<<timed 7s>><<replace "#mount">><<type 50ms>>St. Lawrence pike new was once a church, but it was destroyed in great fire. And this one they didn't rebuild. All that's left is the name. <</type>><</replace>><</timed>>    
+<<timed 18s>><<replace "#mount">><<type 50ms>>I prefer to take the quiet route home, so I have a bit of time alone with my thoughts. <</type>><</replace>><</timed>>    
+<<timed 25s>><<replace "#mount">><<type 50ms>>I was in Turkey on a dig when I heard the news. In Antalya, the temple of Apollo. I got the first flight home but I couldn't stay there. <</type>><</replace>><</timed>>    
+<<timed 33.3s>><<replace "#mount">><<type 53ms>>Part of me felt like going back to Turkey after that, or somewhere else, somewhere even further. 
 
-Another right onto Martin Lane then pass under the streetlamp to Laurence Pountney Hill. 
+There were projects in Mexico, Cambodia, but that felt childish, somehow. 
 
-St Laurence Poutney was once a church but it was destroyed in the Great Fire and this one they didn’t rebuild. All that’s left is the name.
+I'm almost 30 I thought I can't run away. But I can't be back there either. <</type>><</replace>><</timed>>    
+<<timed 52s>><<replace "#mount">><<type 55ms>>So I ended up here. Seemed like a sensible sort of decision. 
 
-I prefer to take the quiet route so I have a bit of time alone with my thoughts. 
+A grown-up job. A boring sensible job for a property developer in the City of London. <</type>><</replace>><</timed>>    
+<<timed 63s>><<replace "#mount">><<type 50ms>>Oh we'll go straight onto Gophir Lane here. I always think of a little animal when I pass along it. I've never looked up the origin of the name because I don't want to shatter that illusion. Then a right on Bush lane. <</type>><</replace>><</timed>> 
 
-I was in Turkey on a dig when I heard the news. In Antalya. The Temple of Apollo. I got the first flight home but I couldn’t stay there. 
-
-Part of me felt like going back out to Turkey after that, or somewhere else, somewhere even further. There were projects in Mexico, Cambodia. But that felt childish, somehow. I’m almost 30, I thought, I can’t run away. But I can’t be back there either.
-
-So I ended up here. Seemed like a sensible sort of decision. A grownup job. A boring sensible job for a property developer in the City of London.
-
-Oh we’ll go straight onto Gophir Lane, here. I always think of a little animal when I pass along it. I’ve never looked up the origin of the name because I don’t want to shatter that illusion.
-
-Then a right on Bush Lane.
-
-<<button "At Bush Lane">><<set $prevpass to $passage>><<goto "RP-08">><</button>>
+<<timed 78s>><<replace "#mount">>$map2
+<<button "At Bush Lane">><<set $prevpass to $passage>><<goto "RP-08">><</button>><</replace>><</timed>>
      
 
 </main>
@@ -646,18 +647,22 @@ Then a right on Bush Lane.
 
 
 :: RP-08 {"position":"455,560","size":"100,100"}
-<<set $passage to "RP-08">><<set $nextpassage to "RP-09">><<audio ":all" stop>><<audio "RP_08" play>><<set $map3 = setup.generateDirectionsMap([51.51116071917635, -0.08949355746559208], [51.51242937363779, -0.08875326774174161])>><main>$map3
+<<set $passage to "RP-08">><<set $nextpassage to "RP-09">><<audio ":all" stop>><<audio "RP_08" play>><<set $map3 = setup.generateDirectionsMap([51.51116071917635, -0.08949355746559208], [51.51242937363779, -0.08875326774174161])>><main>
+  <div id="mount"></div>
+<<timed 0s>><<replace "#mount">><<type 53ms>>I say it's boring, I mean it often is, but every now and then you'll discover something pretty amazing. 
 
-I say it’s boring. I mean it often is but every now and then you’ll discover something pretty amazing.
+Stop me if you're finding this too dull, but here's how it works. <</type>><</replace>><</timed>>    
+<<timed 12s>><<replace "#mount">><<type 50ms>>I do one or two surveys for any site with a company seeking planning permission. 
 
-Stop me if you’re finding this too dull but here’s how it works. I do one or two surveys for any site where the company’s seeking planning permission. The first is a survey I’ll do at my desk: the dullest part. It’s historical research to check if there’s any reason to believe that the site could have historically significant items buried that we’d either be covering up or damaging by building there.
+The first is a survey I'll do at my desk, the dullest part. <</type>><</replace>><</timed>>    
+<<timed 20s>><<replace "#mount">><<type 50ms>>It's historical research to check if there's any reason to believe that the site could have historically significant items buried that we'd either be covering up or damaging by building there. <</type>><</replace>><</timed>>    
+<<timed 31s>><<replace "#mount">><<type 50ms>>Carefully cross Cannon Street here, to St Swithin's Lane. 
 
-Carefully cross Cannon Street here to St Swithins Lane. Look out for traffic.
+Look out for the traffic. We'll keep on down St. Swithin's Lane for a bit when we're over. <</type>><</replace>><</timed>> 
 
-We’ll keep on down St Swithins Lane for a bit, when we’re over.
+<<timed 43s>><<replace "#mount">>$map3
 
-
-<<button "Across">><<set $prevpass to $passage>><<goto "RP-09">><</button>>
+<<button "Across">><<set $prevpass to $passage>><<goto "RP-09">><</button>><</replace>><</timed>>
      
 
 
@@ -669,20 +674,23 @@ We’ll keep on down St Swithins Lane for a bit, when we’re over.
 
 :: RP-09 {"position":"458,683","size":"100,100"}
 <<set $passage to "RP-09">><<set $nextpassage to "RP-10">><<audio ":all" stop>><<audio "RP_09" play>><<set $map4 = setup.generateDirectionsMap([51.51242937363779, -0.08875326774174161], [51.512755942991646, -0.08907766602607836])>>
-<main>$map4
+<main>
+ <div id="mount"></div>
 
-Depending on the location of the site, I’ll make a recommendation based on what I know and what I can discover of its history.
+  
+<<timed 0s>><<replace "#mount">><<type 50ms>>Depending on the location of the site, I'll make a recommendation based on what I know and what I can discover of its history. 
 
-If it’s the middle of nowhere, the chances of historical significance are slimmer. It’s all about weighing up probabilities. When a site comes up for development in the City of London though, you can pretty much guarantee that I’ll make a recommendation to move onto a second survey, which involves me being on-site. A proper archaeological investigation.
+If it's the middle of nowhere, the chances of historical significance are slimmer. <</type>><</replace>><</timed>>    
+<<timed 12s>><<replace "#mount">><<type 50ms>>It's all about weighing up probabilities. 
 
-That’s because there’s always something historically significant here. And if the Victorians built something, you can be sure they weren’t particularly rigorous about checking what was lying beneath.
+When a site comes up for development in the City of London, though, you can pretty much guarantee that I'll make a recommendation to move onto a second survey, which involves me being on site a proper archaeological investigation. <</type>><</replace>><</timed>>    
+<<timed 27s>><<replace "#mount">><<type 45ms>>That's because there's always something historically significant here. 
 
-That’s exactly what happened with the girl.
+And if the Victorians built something, you can be sure they weren't particularly rigorous about checking what was lying beneath. <</type>><</replace>><</timed>> 
+<<timed 37s>><<replace "#mount">><<type 50ms>>That's exactly what happened with the girl. 
 
-Left here on Mansion House Place.
-
-
-<<button "At Mansion House Place">><<set $prevpass to $passage>><<goto "RP-10">><</button>>
+Left here on Mansion House place. <</type>><</replace>><</timed>> 
+<<timed 47s>><<replace "#mount">>$map4<<button "At Mansion House Place">><<set $prevpass to $passage>><<goto "RP-10">><</button>><</replace>><</timed>>
      
 
 
@@ -694,14 +702,18 @@ Left here on Mansion House Place.
 
 :: RP-10 {"position":"456,808","size":"100,100"}
 <<set $passage to "RP-10">><<set $nextpassage to "RP-11A">><<audio ":all" stop>><<audio "RP_10" play>><<set $map5 = setup.generateDirectionsMap([51.512755942991646, -0.08907766602607836], [51.51278944399552, -0.09011492250314354])>>
-<main>$map5
+<main>
+ <div id="mount"></div>
+  
+<<timed 0s>><<replace "#mount">><<type 50ms>>When the IRA bombed the Baltic Exchange and they, um, English Heritage this was, not the IRA, realized fully restoring it would be too expensive, the land was bought for development. <</type>><</replace>><</timed>>    
+<<timed 11s>><<replace "#mount">><<type 50ms>>And that's where I came in. I knew it was very likely I'd find some artifacts, probably Roman. 
 
-When the IRA bombed the Baltic Exchange and they - English Heritage, this was, not the IRA realised fully restoring it would be too expensive, the land was bought for development. And that’s where I came in. I knew it was very likely I’d find some artefacts, probably Roman, but I wasn’t prepared for finding her.
+But I wasn't prepared for finding her. <</type>><</replace>><</timed>>    
+<<timed 22s>><<replace "#mount">><<type 50ms>>Take St. Stephen's Road to Walbrook - that's the name of one of the old London rivers, buried underground now. <</type>><</replace>><</timed>> 
 
-Take St Stephens Row to Walbrook. That’s the name of one of one of the old London rivers, buried underground now.
+<<timed 32s>><<replace "#mount">>$map5
 
-
-<<button "At Walbrook">><<set $prevpass to $passage>><<goto "RP-11A">><</button>>
+<<button "At Walbrook">><<set $prevpass to $passage>><<goto "RP-11A">><</button>><</replace>><</timed>>
      
 
 </main>
@@ -711,71 +723,73 @@ Take St Stephens Row to Walbrook. That’s the name of one of one of the old Lon
 :: RP-11A {"position":"450,925","size":"100,100"}
 <<set $passage to "RP-11A">><<set $nextpassage to "RP-12">><<audio ":all" stop>><<audio "RP_11A" play>>
 <main>
+ <div id="mount"></div>
+ 
+  
+<<timed 0s>><<replace "#mount">><<type 50ms>>When you see Bank tube station, go across, just to the left of it, push the glass door and go inside. 
 
-When you see Bank tube station, go across. Just to the left of it, push the glass door and go inside. Take a look around.
+Take a look around. <</type>><</replace>><</timed>>    
+<<timed 11s>><<replace "#mount">><<type 50ms>>Okay, I have to be honest, this isn't actually where I work. 
 
-Okay I have to be honest. This isn’t actually where I work. It’s a few doors down but I like to come here sometimes. Underneath, there’s a whole Roman Mithraeum. Not many people know about it. Geeky archaeology insider tip.
+It's a few doors down. But I like to come here sometimes. <</type>><</replace>><</timed>>    
+<<timed 20s>><<replace "#mount">><<type 55ms>>Underneath there's a whole Roman Mithraeum! 
 
-Are you inside now? Let me know when you are.
+Not many people know about it. Geeky archaeology insider tip. 
 
-<<button "I'm inside now">><<set $prevpass to $passage>><<goto "RP-12">><</button>>
-     
+Are you inside now? Let me know when you are. 
 
-
-
+<<button "I'm inside now">><<set $prevpass to $passage>><<goto "RP-12">><</button>><</type>><</replace>><</timed>> 
 
 </main>
 <<include "footer">>
 
 
-:: RP-12 {"position":"458.33333333333337,1051.6666666666667","size":"100,100"}
+:: RP-12 {"position":"458,1051","size":"100,100"}
 <<set $passage to "RP-12">><<set $nextpassage to "RP-13">><<audio ":all" stop>><<audio "RP_12" play>>
 <main>
+ <div id="mount"></div>
+<<timed 0s>><<replace "#mount">><<type 50ms>>Maybe one day the Mithraeum will be open to the public. 
 
-Maybe one day the Mithraeum will be open to the public. I’ve been taken down there before and it’s incredible. Mithras was a Cult, in the Roman sense. That word didn’t hold negative connotations for the most part at the time but these guys actually were kinda culty. There’s a lot we don’t know about it but it looks like a kind of Romanisation of Zoroastrianism. Or maybe just a way of people continuing the worship the old gods without seeming like bad Romans. We’re a long way from Persia here though so it must have been popular.
+I've been taken down there before and it is incredible. <</type>><</replace>><</timed>>    
+<<timed 7s>><<replace "#mount">><<type 50ms>>Mithras was a cult, in the Roman sense. That word didn't hold negative connotations for the most part at the time. 
 
-Oh and in case you didn’t know, fire’s a big part of Zoroastrianism. Mad for the fire, they were.
+But these guys actually were kinda culty. <</type>><</replace>><</timed>>    
+<<timed 17s>><<replace "#mount">><<type 50ms>>There's a lot we don't know about it, but it looks like a kind of Romanisation of Zoroastrianism. 
 
-<<timed 10s>><<set $prevpass to $passage>><<goto "RP-13">><</timed>>
+Or maybe just a way of people continuing the worship of the Old Gods without seeming like bad Romans. <</type>><</replace>><</timed>>   
+<<timed 30s>><<replace "#mount">><<type 50ms>>We're a long way from Persia here though, so it must have been popular. 
+
+Oh, and in case you didn't know, fire is a big part of Zoroastrianism. Mad for the fire, they were. <</type>><</replace>><</timed>> 
+
+<<timed 46s>><<set $prevpass to $passage>><<goto "RP-13">><</timed>>
      
-
-
-
-
 </main>
 <<include "footer">>
 
 
-:: RP-13 {"position":"458.33333333333337,1176.6666666666667","size":"100,100"}
+:: RP-13 {"position":"458,1176","size":"100,100"}
 <<set $passage to "RP-13">><<set $nextpassage to "RP-14">><<audio ":all" stop>><<audio "RP_13" play>>
 <main>
-Mithras, my master. I have come to you in my hour of despair 
+ <div id="mount"></div>
+ <<timed 0s>><<replace "#mount">><<type 50ms>>[Fire crackling...] <</type>><</replace>><</timed>>    
+<<timed 5s>><<replace "#mount">><<type 50ms>>Mithras, my master, I have come to you in my hour of despair. <</type>><</replace>><</timed>>    
+<<timed 11s>><<replace "#mount">><<type 50ms>>My beloved has perished. For three years I was away from her. 
 
-My beloved has perished
+I wanted to prove myself a warrior.
 
-For three years I was away from her. I wanted to prove myself a warrior. Show her family that my strength could compensate for my common blood. That I would bring honour to Rome.
+Show her family that my strength could compensate for my common blood that I would bring honor to Rome. <</type>><</replace>><</timed>>    
+<<timed 29s>><<replace "#mount">><<type 55ms>>I left the comforts of Londinium and join the army in Caledonia. But the northern Barbarians overwhelmed us. 
 
-I left the comforts of Londinium and joined the army in Caledonia but the Northern Barbarians overwhelmed us. And the weather. I’ve never been known so much rain. Every day was a battle to exist.
+And the weather. I've never known so much rain. Every day was a battle to exist. <</type>><</replace>><</timed>>    
+<<timed 45s>><<replace "#mount">><<type 50ms>>When we retreated and returned to Camulodunum, I didn't know what to do. 
 
-When we retreated and returned to Camulodunum, I didn’t know what to
-do. I couldn’t return to Londinium boasting of our victories, like I’d planned. There had been no victory.
+I couldn't return to Londinium boasting of our victories, like I'd planned. There had been no victory. <</type>><</replace>><</timed>>    
+<<timed 57s>><<replace "#mount">><<type 50ms>>Defeat at the hands of the Barbarians could only bring shame on Rome. 
 
-Defeat at the hands of barbarians could only bring shame on Rome.
-
-So I remained in Camulodunum. I asked for guidance, O wise Mithras, but none came.
-
-I do not mean to criticise.
-
-Am I being tested? Why did she have to die?
-
-After everything I did for her.
-
-She left me like this.
-
-And I am lost.
-
-Mithras. I beg of you. Send me a sign.
-
+So I remained in Camulodunum. I asked for guidance, o wise Mithras, but none came. <</type>><</replace>><</timed>>    
+<<timed 71s>><<replace "#mount">><<type 58ms>>I do not mean to criticize. Am I being tested? Why did she have to die? After everything I did for her. She left me like this. And I am lost. <</type>><</replace>><</timed>>    
+<<timed 89s>><<replace "#mount">><<type 50ms>>Mithras I beg of you. Send me a sign. <</type>><</replace>><</timed>> 
+<<timed 100s>><<replace "#mount">>
 <<set $sentence to "">>
 <div class="message">
 $sentence
@@ -863,24 +877,29 @@ $sentence
 <</button>>
 <div class="error-msg">
 </div>
-
+<</replace>><</timed>>
 </main>
 <<include "footer">>
 
 
-:: RP-14 {"position":"450,1300","size":"100,100"}
+:: RP-14 {"position":"450,1298.3333333333333","size":"100,100"}
 <<set $passage to "RP-14">><<set $nextpassage to "RP-15A">><<audio ":all" stop>><<audio "RP_14" play>>
 <main>
+ <div id="mount"></div>
 
-Oh mighty Mithras. I search for meaning and this is what you tell me. I cannot understand your words. They are a mystery to me but I know that a mystery can be the greatest source of a deeper kind of truth. Such are your teachings.
+<<timed 0s>><<replace "#mount">><<type 50ms>>Oh mighty Mithras. 
 
-I thank you, glorious Mithras, for honouring me with this.
+I search for meaning and this is what you tell me. <</type>><</replace>><</timed>>    
+<<timed 6s>><<replace "#mount">><<type 50ms>>I cannot understand your words. 
 
-I must leave this place.
+They are a mystery to me but I know that a mystery can be the greatest source of a deeper kind of truth. Such are your teachings. <</type>><</replace>><</timed>>    
+<<timed 20s>><<replace "#mount">><<type 50ms>>I thank you glorious Mithras for honoring me with this. 
 
-<<timed 10s>><<set $prevpass to $passage>><<goto "RP-15A">><</timed>>
+I must leave this place. <</type>><</replace>><</timed>> 
+
+<<timed 35s>><<set $prevpass to $passage>><<goto "RP-15A">><</timed>>
      
-
+ 
 
 
 
@@ -891,39 +910,33 @@ I must leave this place.
 :: RP-15A {"position":"450,1425","size":"100,100"}
 <<set $passage to "RP-15A">><<set $nextpassage to "RP-16A">><<audio ":all" stop>><<audio "RP_15A" play>>
 <main>
+ <div id="mount"></div>
+<<timed 0s>><<replace "#mount">><<type 45ms>>They've taken her away now, the Roman girl. 
 
-They’ve taken her away now, the Roman girl. I was hoping they’d let me keep her a little longer.
+I was hoping they'd let me keep her a little longer. <</type>><</replace>><</timed>>    
+<<timed 5.5s>><<replace "#mount">><<type 50ms>>Not that I was making any significant discoveries. 
 
-Not that I was making any significant discoveries. A girl. Adolescent. 3rd century AD. Couple of shards of pottery and a gold bracelet buried with her. Probably noble.
+A girl, adolescent, third century AD, couple of shards of pottery and a gold bracelet buried with her. 
 
-She reminded me of you.
+Probably noble. <</type>><</replace>><</timed>>    
+<<timed 19s>><<replace "#mount">><<type 50ms>>She reminded me of you. <</type>><</replace>><</timed>>    
+<<timed 24s>><<replace "#mount">><<type 50ms>>Let's not stay here too long, head back up to the street.
 
-Let’s not stay here too long.
+<<button "Okay">><<set $prevpass to $passage>><<goto "RP-16A">><</button>> <</type>><</replace>><</timed>> 
 
-Head back up to the street.
-
-
-<<button "Okay">><<set $prevpass to $passage>><<goto "RP-16A">><</button>>
      
-
-
-
-
 </main>
 <<include "footer">>
 
 
-:: RP-16A {"position":"456.6666666666667,1536.6666666666667","size":"100,100"}
+:: RP-16A {"position":"456,1536","size":"100,100"}
 <<set $passage to "RP-16A">><<set $nextpassage to "RP-17">><<audio ":all" stop>><<audio "RP_16A" play>>
 <main>
+ <div id="mount"></div>
+<<timed 0s>><<replace "#mount">><<type 50ms>>When we're outside, let's take a right, then another right into the Bloomberg Arcade. <</type>><</replace>><</timed>> 
 
-When we’re outside, let’s take a right. Then another right into the Bloomberg Arcade.
-
-<<timed 10s>><<set $prevpass to $passage>><<goto "RP-17">><</timed>>
-     
-
-
-
+<<timed 30s>><<set $prevpass to $passage>><<goto "RP-17">><</timed>>
+    
 
 </main>
 <<include "footer">>
@@ -932,27 +945,31 @@ When we’re outside, let’s take a right. Then another right into the Bloomber
 :: RP-17 {"position":"455,1660","size":"100,100"}
 <<set $passage to "RP-17">><<audio ":all" stop>><<audio "RP_17" play>>
 <main>
-I have to remind myself sometimes that it’s healthy to be among the living.
+ <div id="mount"></div>
+  
+<<timed 0s>><<replace "#mount">><<type 45ms>>I have to remind myself sometimes that it's healthy to be among the living. <</type>><</replace>><</timed>>    
+<<timed 4.3s>><<replace "#mount">><<type 45ms>>We talked a lot about you coming to visit, but it was never a good time with work and with your exams. <</type>><</replace>><</timed>>    
+<<timed 10s>><<replace "#mount">><<type 50ms>>Now, whenever I walk around the city, I think of you and the places we could have gone together. 
 
-We talked a lot about you coming to visit but it was never a good time with work and with your exams.
+The way I imagine it, you're the life and soul, of course, and I'm the awkward older sister. <</type>><</replace>><</timed>>    
+<<timed 22s>><<replace "#mount">><<type 42ms>>You bum cigarettes from me all night. 
 
-Now, whenever I walk around the city I think of you and the places we could have gone together.
+You keep saying that you'll get a pack when you can get change for the machine. But that never happens. 
 
-The way I imagine it, you’re the life and soul, of course. And I’m the awkward older sister. You bum cigarettes from me all night. You keep saying that you’ll get a pack when you can get change for the machine but that never happens and I know it won’t but I don’t care.
+And I know it won't. But I don't care. <</type>><</replace>><</timed>>    
+<<timed 30.3s>><<replace "#mount">><<type 45ms>>You crack jokes that are really not in any way acceptable, because you know, I'll try not laugh at them and fail and you've always loved that. <</type>><</replace>><</timed>>    
+<<timed 40s>><<replace "#mount">><<type 50ms>>There's not a single place here I haven't imagined you being. 
 
-You crack jokes that are really not in any way acceptable because you know I’ll try not to laugh at them and fail and you’ve always loved that.
+So many strangers I've seen from behind and almost called out you name before stopping myself. 
 
-There’s not a single place here I haven’t imagined you being. So many strangers I’ve seen from behind and almost called out your name before stopping myself.
-
-How can there not be more time?
-
-There are some benches along here. If there’s space, I’ll sometimes sit.
-
+How can there not be more time? <</type>><</replace>><</timed>>    
+<<timed 54.3s>><<replace "#mount">><<type 50ms>>There are some benches along here. If there's space, I'll sometimes sit. <</type>><</replace>><</timed>> 
+<<timed 64s>><<replace "#mount">>
 <div class = "menu-wrapper">
 <<button "Sit with me">><<set $prevpass to $passage>><<goto "RP-18">><</button>>
 
 <<button "Keep walking">><<set $prevpass to $passage>><<goto "RP-19">><</button>>
-</div>
+</div><</replace>><</timed>>
 
 
 
@@ -961,69 +978,80 @@ There are some benches along here. If there’s space, I’ll sometimes sit.
 <<include "footersimple">>
 
 
-:: RP-18 {"position":"386.66666666666663,1788.3333333333335","size":"100,100"}
+:: RP-18 {"position":"386,1788","size":"100,100"}
 <<set $passage to "RP-18">><<set $nextpassage to "RP-19">><<audio ":all" stop>><<audio "RP_18" play>>
 <main>
+ <div id="mount"></div>
+  
+<<timed 0s>><<replace "#mount">><<type 50ms>>When I sit here, I'll watch people getting lunch, walking, and talking about their work, bitching about colleagues. 
 
-When I sit here, I’ll watch people getting lunch, walking and talking about their work. Bitching about colleagues. What it must be like to work surrounded by so much living. I look at the women, their long nails painted blood red or jet black and I glance at my own. Always kept short but still finding bits of sand and dirt lodged there. The smell of mothballed white gloves imprinted on my fingertips. O let me kiss that hand. Let me wipe it first; it smells of mortality.
+What it must be like to work surrounded by so much living. <</type>><</replace>><</timed>>    
+<<timed 13s>><<replace "#mount">><<type 50ms>>I look at the women, their long nails painted blood red or jet black, and I glance at my own. 
 
-We can’t linger here too long.
-Let’s get going.
+Always kept short but still finding bits of sand and dirt lodged there. <</type>><</replace>><</timed>>    
+<<timed 25s>><<replace "#mount">><<type 50ms>>The smell of mothballed white gloves imprinted on my fingertips. 
 
-<<button "Okay">><<set $prevpass to $passage>><<goto "RP-19">><</button>>
-     
+O let me kiss that hand. Let me wipe it first, it smells of mortality. <</type>><</replace>><</timed>>    
+<<timed 39s>><<replace "#mount">><<type 50ms>>We can't linger here too long. 
 
+Let's get along. 
 
+<<button "Okay">><<set $prevpass to $passage>><<goto "RP-19">><</button>><</type>><</replace>><</timed>> 
 
 
 </main>
 <<include "footer">>
 
 
-:: RP-19 {"position":"453.3333333333333,1921.6666666666667","size":"100,100"}
+:: RP-19 {"position":"453,1921","size":"100,100"}
 <<set $passage to "RP-19">><<set $nextpassage to "RP-20">><<audio ":all" stop>><<audio "RP_19" play>><<set $map5 = setup.generateDirectionsMap([51.51278944399552, -0.09011492250314354], [51.51276879002211, -0.09282657323722317])>>
 <main>
+ <div id="mount"></div>
+  
+<<timed 0s>><<replace "#mount">><<type 50ms>>These streets would scare you, I think. 
 
-These streets would scare you, I think. When I come home, everything seems so much smaller than I remember it.
+When I come home, everything seems so much smaller than I remember it. <</type>><</replace>><</timed>>    
+<<timed 11s>><<replace "#mount">><<type 50ms>>We're coming up to Queen Victoria Street. Let's go across that. <</type>><</replace>><</timed>> 
 
-We’re coming up to Queen Victoria Street. Let’s go across that.
+<<timed 22s>><<replace "#mount">>$map5
 
-$map5
-
-<<button "Across">><<set $prevpass to $passage>><<goto "RP-20">><</button>>
+<<button "Across">><<set $prevpass to $passage>><<goto "RP-20">><</button>><</replace>><</timed>> 
      
-
-
-
 
 </main>
 <<include "footer">>
 
 
-:: RP-20 {"position":"451.66666666666663,2045","size":"100,100"}
+:: RP-20 {"position":"451,2045","size":"100,100"}
 <<set $passage to "RP-20">><<set $nextpassage to "RP-21">><<audio ":all" stop>><<audio "RP_20" play>><<set $map6 = setup.generateDirectionsMap([51.51276879002211, -0.09282657323722317], [51.513468414032424, -0.09346468720631472])>>
-<main>$map6
+<main>
+ <div id="mount"></div>
 
-Knowing a place is knowing its back streets.
+   
+<<timed 0s>><<replace "#mount">><<type 50ms>>Knowing a place is knowing its back streets. 
 
-A lot like knowing a person.
+A lot like knowing a person. <</type>><</replace>><</timed>>    
+<<timed 8s>><<replace "#mount">><<type 52ms>>Straight across to Watling Street, then. 
 
-Straight across to Watling Street then. The ancient roman road that meets the Devil’s Highway.
+The ancient Roman road that meets the Devil's Highway. <</type>><</replace>><</timed>>    
+<<timed 16s>><<replace "#mount">><<type 52ms>>Did the people of Londonium walk around at lunchtime gassing about their work colleagues you think? 
 
-Did the people of Londinium walk around at lunchtime gassing about their work colleagues, y’think?
+I'm not sure their lunch breaks would have been six hours long. They were hardly grabbing a sandwich. <</type>><</replace>><</timed>>    
+<<timed 29s>><<replace "#mount">><<type 52ms>>I know you were older than her as well, but her shape is how I remember you. 
 
-Sure their lunchbreaks would have been six hours long, they were hardly grabbing a sandwich.
+When I'd come home for Christmas and you'd beg me to let you come to the Gweedore with me. I'd try saying no. But you knew I'd relent. 
 
-I know you were older than her as well but her shape is how I remember you. When I’d come home for Christmas and you’d beg me to let you come to the Gweedore with me. And I’d try saying no but you knew I’d relent and I’d spend the whole night running after you every time you’d disappear.
+I'd spend the whole night running after you every time you disappear. <</type>><</replace>><</timed>>    
+<<timed 49s>><<replace "#mount">><<type 50ms>>The Romans always buried their dead outside the walls of the city - to the northeast mostly. 
 
-The Romans always buried their dead outside the walls of the City, to the North East mostly, so her being found within the city limits suggests importance. Maybe her family were just rich.
+So her being fined within the city limits suggests importance. Maybe her family were just rich. <</type>><</replace>><</timed>>    
+<<timed 65s>><<replace "#mount">><<type 55ms>>I don't blame anyone. I tried that young lad. Steven. He was devastated, I know. I don't think he believed me. I never looked for anyone to blame. <</type>><</replace>><</timed>>    
+<<timed 80s>><<replace "#mount">><<type 50ms>>I hope he's okay. I wish I had met him before. Like I'd seen you two together being happy, being young. Together. <</type>><</replace>><</timed>>    
+<<timed 91s>><<replace "#mount">><<type 50ms>>Let's not go too far down here. Take a left onto Bow lane. <</type>><</replace>><</timed>> 
 
-I don’t blame anyone. I tried that young lad Stephen. He was devastated, I know. I don’t think he believed me. I never looked for anyone to blame. I hope he’s okay. I wish I’d met him before. Like I’d seen you two together, being happy, being young. Together.
+<<timed 100s>><<replace "#mount">>$map6
 
-Let’s not go too far down here.
-Take a left onto Bow Lane.
-
-<<button "At Bow Lane">><<set $prevpass to $passage>><<goto "RP-21">><</button>>
+<<button "At Bow Lane">><<set $prevpass to $passage>><<goto "RP-21">><</button>><</replace>><</timed>>
      
 
 
@@ -1033,26 +1061,31 @@ Take a left onto Bow Lane.
 <<include "footer">>
 
 
-:: RP-21 {"position":"451.66666666666663,2161.666666666667","size":"100,100"}
+:: RP-21 {"position":"451,2161","size":"100,100"}
 <<set $passage to "RP-21">><<set $nextpassage to "RP-22">><<audio ":all" stop>><<audio "RP_21" play>><<set $map7 = setup.generateDirectionsMap( [51.513468414032424, -0.09346468720631472], [51.51367154510121, -0.09382476836365314])>>
-<main>$map7
+<main>
+ <div id="mount"></div>
 
-I’ve looked for signs of you in so many places. I can’t even tell you how many false idols I’ve worshipped.
+  
+<<timed 0s>><<replace "#mount">><<type 50ms>>I've looked for signs of you in so many places. 
 
-I have no convictions. If Satan himself told me he could give me a sign from you, I’d be scratching a pentagram on my kitchen floor in no time, sacrificing a goat.
+I can't even tell you how many false idols I've worshipped. <</type>><</replace>><</timed>>    
+<<timed 9s>><<replace "#mount">><<type 50ms>>I have no convictions. 
 
-I’ve tried mediums. Tarot cards. Hypnosis. Tea-leaves. Coffee grinds. Electrical currents.
+If Satan himself told me he could give me a sign from you, I'd be scratching a pentagram on my kitchen floor in no time, sacrificing a goat. <</type>><</replace>><</timed>>    
+<<timed 20s>><<replace "#mount">><<type 50ms>>I've tried mediums, tarot cards, hypnosis, tea leaves, coffee grinds, electrical currents, you name it. 
 
-You name it.
+But it's a one way conversation. <</type>><</replace>><</timed>>    
+<<timed 34s>><<replace "#mount">><<type 53ms>>I know this is morbid, but looking at her, it was the closest I've come in three years. 
 
-But it’s a one way conversation.
+And now they've taken her away too. <</type>><</replace>><</timed>>    
+<<timed 45s>><<replace "#mount">><<type 50ms>>They'll find out more about her, I'm sure. 
 
-I know this is morbid but, looking at her, it was the closest I’ve
-come in three years. And now they’ve taken her away too. They’ll find out more about her, I’m sure. Put her on display in a museum. So she’ll stop being mine as well.
+Put her on display in a museum. So she'll stop being mine as well. <</type>><</replace>><</timed>>    
+<<timed 54s>><<replace "#mount">><<type 50ms>>Turn into Bow Churchyard. <</type>><</replace>><</timed>> 
 
-Turn into Bow Churchyard.
 
-<<button "At Bow Churchyard">><<set $prevpass to $passage>><<goto "RP-22">><</button>>
+<<timed 57s>><<replace "#mount">>$map7<<button "At Bow Churchyard">><<set $prevpass to $passage>><<goto "RP-22">><</button>><</replace>><</timed>>
      
 
 
@@ -1062,51 +1095,73 @@ Turn into Bow Churchyard.
 <<include "footer">>
 
 
-:: RP-22 {"position":"450,2281.666666666667","size":"100,100"}
+:: RP-22 {"position":"450,2281","size":"100,100"}
 <<set $passage to "RP-22">><<set $nextpassage to "RP-23">><<audio ":all" stop>><<audio "RP_22" play>>
 <main>
+ <div id="mount"></div>
+  
+<<timed 0s>><<replace "#mount">><<type 45ms>>It's unlikely they'll ever be able to identify her. <</type>><</replace>><</timed>>    
+<<timed 3s>><<replace "#mount">><<type 45ms>>Planning permission will be granted, and building will begin. 
 
-It’s unlikely they’ll ever be able to identify her.
+A huge spaceship-like structure that will mean London to people who haven't been born yet. <</type>><</replace>><</timed>>    
+<<timed 11s>><<replace "#mount">><<type 50ms>>And she'll only be remembered for being discovered underneath the spaceship. 
 
-Planning permission will be granted and building will begin. A huge spaceship-like structure that will mean London to people who haven’t been born yet. And she’ll only be remembered for being discovered underneath the spaceship.
+The Roman girl who once reminded me of you. 
 
-The Roman girl who once reminded me of you. Unearthed by a republican bomb.
+Unearthed by a republican bomb. <</type>><</replace>><</timed>>    
+<<timed 21s>><<replace "#mount">><<type 50ms>>Maybe there was someone who wished for more time with her. <</type>><</replace>><</timed>> 
 
-Maybe there was someone who wished for more time with her.
-
-<<timed 10s>><<set $prevpass to $passage>><<goto "RP-23">><</timed>>
+<<timed 31s>><<set $prevpass to $passage>><<goto "RP-23">><</timed>>
      
 </main>
 <<include "footer">>
 
 
-:: RP-23 {"position":"445,2410.0000000000005","size":"100,100"}
+:: RP-23 {"position":"445,2410","size":"100,100"}
 <<set $passage to "RP-23">><<set $nextpassage to "RP-24">><<audio ":all" stop>><<audio "RP_23" play>>
 <main>
-This city has changed. It looks so different and I don’t know why. Here I stand on the road to Verulamium. Her family wouldn’t tell me where her resting place was. I searched for it among the burial grounds to the North East of the City. I asked strangers. A morbid request. The more polite said they didn’t know.
+ <div id="mount"></div>
+  
+<<timed 4s>><<replace "#mount">><<type 52ms>>This city has changed. It looks so different and I don't know why.
 
-Most stared at me as if I were diseased and moved away.
+Here I stand on the road to Verulamium. <</type>><</replace>><</timed>>    
+<<timed 14s>><<replace "#mount">><<type 50ms>>Her family wouldn't tell me where her resting place was. 
 
-I only wanted to mourn her.
+I searched for it among the burial grounds to the North East of the city. <</type>><</replace>><</timed>>    
+<<timed 22s>><<replace "#mount">><<type 53ms>>I asked strangers. A morbid request. 
 
-I wish I could see her face. When I close my eyes, I can picture a girl. When I left she was only thirteen. How had it changed? Does it matter now?
+The more polite said they didn't know. 
 
-I wish I could have known her better.
+Most stared at me. As if I were diseased, and moved away. <</type>><</replace>><</timed>>    
+<<timed 34s>><<replace "#mount">><<type 57ms>>I only wanted to mourn her. I wish I could see her face. 
 
-To understand what it was about her that I loved.
+When I close my eyes. I can picture a girl. 
 
-Oh all-powerful Mithras, is there nothing you can say to comfort me? After all the pain I suffered for you. Give me something.
+When I left, she was only thirteen. 
 
-I try not to think of those last moments. Instead I imagine you an hour before at the party, smoking, making people laugh. Doing impressions of whoever. The good part of me wants you to be at rest but there’s another part of me that -
+How had it changed? Does it matter now? <</type>><</replace>><</timed>>    
+<<timed 52s>><<replace "#mount">><<type 53ms>>I wish I could have known her better. To understand what it was about her that I loved. <</type>><</replace>><</timed>>    
+<<timed 60s>><<replace "#mount">><<type 50ms>>O, all powerful Mithras, is there nothing you can say to comfort me? 
 
-I mean sure you know I can be selfish. You’d say it yourself. And the selfish part of me doesn’t want you at rest. Ripped away like that in a car crash. The unjustness of it. That it might keep you here.
+After all the pain I suffered for you give me something. <</type>><</replace>><</timed>>   
+<<timed 72s>><<replace "#mount">><<type 53ms>>I try not to think of those last moments. Instead, I imagine you an hour before, at the party. 
 
-I’d rather be haunted, tormented by you than have you disappear. It’s the absence I can’t stand. The absolute brutality of it.
+Smoking, making people laugh, doing impressions of whoever. <</type>><</replace>><</timed>>    
+<<timed 84s>><<replace "#mount">><<type 50ms>>The good part of me wants you to be at rest. 
 
-Barbaric.
+But there's another part of me that- <</type>><</replace>><</timed>>    
+<<timed 92s>><<replace "#mount">><<type 50ms>>I mean, sure, you know, I can be selfish. You'd say it yourself.
 
-Don’t be gone. Let me know you’re there. Please. Please. Let me know you’re there. Give me something.
+And the selfish part of me doesn't want you at rest. Ripped away like that in a car crash. 
 
+The unjustness of it. That it might keep you here. <</type>><</replace>><</timed>>    
+<<timed 110s>><<replace "#mount">><<type 55ms>>I'd rather be haunted - tormented by you - than have you disappear.
+
+It's the absence I can't stand the absolute brutality of it. Barbaric. <</type>><</replace>><</timed>>    
+<<timed 123s>><<replace "#mount">><<type 50ms>>Don't be gone. Let me know you're there. 
+
+Please. Please. Let me know you're there. Give me something. <</type>><</replace>><</timed>> 
+<<timed 137s>><<replace "#mount">>
 <<set $sentence to "">>
 <div class="message2">
 $sentence
@@ -1237,6 +1292,7 @@ $sentence
 <</button>>
 <div class="error-msg2">
 </div>
+<</replace>><</timed>>
 
 
 
@@ -1245,22 +1301,28 @@ $sentence
 <<include "footer">>
 
 
-:: RP-24 {"position":"450.8333333333333,2538.333333333333","size":"100,100"}
+:: RP-24 {"position":"450,2538","size":"100,100"}
 <<set $passage to "RP-24">><<set $nextpassage to "end">><<audio ":all" stop>><<audio "RP_24" play>>
 <main>
+ <div id="mount"></div>
 
-Thank you.
+  
+<<timed 0s>><<replace "#mount">><<type 50ms>>Thank you. <</type>><</replace>><</timed>>    
+<<timed 9s>><<replace "#mount">><<type 50ms>>I sometimes go into the church here and light a candle. <</type>><</replace>><</timed>>   
+<<timed 14s>><<replace "#mount">><<type 50ms>>It's very quiet inside. 
 
-I sometimes go into the church here and light a candle. It’s very quiet inside even when things are getting rowdy out in the square out there. I don’t come to the services but they’ve started to recognise me now. I’ll light a candle, sit for a few minutes, think about you.
+Even when things are getting rowdy out in the square outthere. <</type>><</replace>><</timed>>    
+<<timed 21s>><<replace "#mount">><<type 50ms>>I don't come to the services but they've started to recognize me now. <</type>><</replace>><</timed>>    
+<<timed 26s>><<replace "#mount">><<type 50ms>>I'll light a candle, sit for a few minutes. Think about you. <</type>><</replace>><</timed>>    
+<<timed 35s>><<replace "#mount">><<type 50ms>>I'm going in there now. 
 
-I’m going in there now. You can join me if you like.
+You can join me if you like. 
 
-Either way, it’s time for me to stop.
+Either way, it's time for me to stop. <</type>><</replace>><</timed>> 
 
 
-<<timed 10s>><<set $prevpass to $passage>><<goto "end">><</timed>>
+<<timed 60s>><<set $prevpass to $passage>><<goto "end">><</timed>>
      
-
 
 
 
