@@ -250,7 +250,7 @@ align-items: flex-end
 }
 
 .nav-item.replay, .nav-item.end{
-justify-content: center
+justify-content: right
 }
 .nav-item.replay, .nav-item.forward{
 justify-content: end
@@ -345,6 +345,70 @@ textarea{
     }
 }
 
+/* KEY  */
+.key-wrapper{
+  width:fit-content;
+  display:flex;
+  justify-content:center;
+  padding: 2rem;
+  margin:auto
+}
+
+
+.key-wrapper > img{
+    width:100px
+}
+
+.adventure-wrapper{
+border: solid 1px white;
+    padding: 10px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.adv-item{
+display: flex;
+   justify-content: space-between;
+    align-items: end;
+}
+
+.adventure-title{
+  margin-block-end:0;
+  text-align:center
+}
+
+.glowing {
+  /* width: 100px;
+  height: 100px; */
+  border-radius:50%;
+  background-color: transparent;
+  -webkit-animation: glowing 3s ease-in-out infinite alternate;
+  -moz-animation: glowing 3s ease-in-out infinite alternate;
+  animation: glowing 3s ease-in-out infinite alternate;
+}
+@-webkit-keyframes glowing {
+  from {
+    box-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #f0f, 0 0 40px #0ff, 0 0 50px #DAA520, 0 0 60px #DAA520, 0 0 70px #DAA520;
+  }
+  to {
+    box-shadow: 0 0 20px #fff, 0 0 30px #FAFAD2, 0 0 40px #FAFAD2, 0 0 50px #FAFAD2, 0 0 60px #FAFAD2, 0 0 70px #FAFAD26, 0 0 80px #FAFAD2;
+  }
+}
+
+@media screen and (min-width: 450px) {
+.choices{
+  display:flex;
+  justify-content: space-between;
+  
+}
+
+.adventure-wrapper{
+  padding: 2rem
+}
+
+}
 
 /* MAP */
 	.map{
@@ -523,7 +587,7 @@ setup.checkForRepeats = (array,element) => {
 
 
 :: lost {"position":"710,53","size":"100,100"}
-<<set $passage to "lost">><<include "header">>
+<<set $passage to "lost">>
 <main>
 
 You have two options:
@@ -546,19 +610,90 @@ You have two options:
 
 
 :: end {"position":"100,600","size":"100,100"}
-<main><<audio ":all" stop>><<set $endMap = setup.generateDirectionsMap([51.51510002285436, -0.1082076329674715],[51.51510002285436, -0.1082076329674715])>>
+<main><<audio ":all" stop>><<set $endMap = setup.generateDirectionsMap([51.51377930428683, -0.0936037807726224],[51.51377930428683, -0.0936037807726224])>><<set $nextpassage to "RP_25">>
 
 End location
 
 $endMap
-</main>
-<<include "footerend">>
 
+<<button "More Info">><<set $prevpass to $passage>><<goto "RP_25">><</button>>
+</main>
+<<include "footer">>
+
+
+
+:: RP_25 {"position":"520,2113","size":"100,100"}
+<<set $passage to "RP_25">><<set $nextpassage to "RP_26">>
+
+<main>
+<div id="mount"></div>
+I think it won’t be so quiet inside today. Do you want to go in and see?
+
+Head into the church, and then down into the crypt. 
+
+The steward in blue will show you where to go.
+
+And please show them this <<button "key">><<set $prevpass to $passage>><<goto "RP_26">><</button>>
+</main>
+<<include "footer">>
+
+:: RP_26 {"position":"520,2113","size":"100,100"}
+<<set $passage to "RP_26">><<set $nextpassage to "EI_23A">>
+ <main>
+<div class="key-wrapper glowing"><img src="./assets/keys-34.png"></div>
+
+</main>
+<<include "footerkey">>
+
+
+::  RP_26adventures {"position":"520,2113","size":"100,100"}
+<<set $passage to "RP_26adventures">><<audio ":all" stop>><main><h3>Start a new adventure...</h3>
+<div class="choices">
+<div class="adventure-wrapper"><h3>Animals in the City </h3><div class="adv-item"><div>Family Focused
+3 min walk away</div><<button "Show Map">><<set $prevpass to $passage>><<goto "RP_27A">><</button>></div></div>
+
+<div class="adventure-wrapper"><h3>The Artful Dodges Again </h3><div class="adv-item"><div>Family Focused
+6 min walk away</div><<button "Show Map">><<set $prevpass to $passage>><<goto "RP_27C">><</button>></div></div>
+</div>
+
+<div class="adventure-wrapper"><h3>The Future Gondolier </h3><div class="adv-item"><div>Family Focused
+7 min walk away</div><<button "Show Map">><<set $prevpass to $passage>><<goto "RP_27B">><</button>></div></div>
+</div>
+</main>
+<<include "footerkey">>
+
+:: RP_27A {"position":"520,2113","size":"100,100"}
+<<set $passage to "RP_27A">><<set $map = setup.generateDirectionsMap([51.51377930428683, -0.0936037807726224], [51.51204089721224, -0.09085841779191389])>><main>
+<h2>Animals in the City</h2>
+$map
+
+</main>
+<<include "footerlost">>
+
+:: RP_27B {"position":"520,2113","size":"100,100"}
+<<set $passage to "RP_27B">><<set $map = setup.generateDirectionsMap([51.51377930428683, -0.0936037807726224], [51.51221299705639, -0.09830573558176264])>><main>
+<h2>The Future Gondolier</h2>
+$map
+
+</main>
+<<include "footerlost">>
+
+:: RP_27C {"position":"520,2113","size":"100,100"}
+<<set $passage to "RP_27C">><<set $map = setup.generateDirectionsMap([51.51377930428683, -0.0936037807726224], [51.5135358882094, -0.08796951779088134])>><main>
+<h2>The Artful Dodges Again</h2>
+$map
+
+</main>
+<<include "footerlost">>
 
 :: footerend {"position":"99,485","size":"100,100"}
 <footer>
 <div class="nav-item"><<button "Start again">><<goto "landing">><</button>></div>
 </footer>
+
+:: footerkey
+<footer><div class="nav-item"><<button "Key">><<goto "RP_26">><</button>> </div><div class="nav-item"><<button "Start again">><<goto "landing">><</button>></div>
+<div class="nav-item end"><<button "Try another adventure">><<set $prevpass to $passage>><<goto "RP_26adventures">><</button>></div></footer>
 
 
 :: footer {"position":"99,493","size":"100,100"}
@@ -569,6 +704,88 @@ $endMap
 <div class="nav-item forward"><<button ">">><<set $prevpass to $passage>><<goto $nextpassage>><</button>></div>
 </footer>
 
+:: RP-01 {"position":"449,226","size":"100,100"}
+<<set $passage to "RP-01">><<set $nextpassage to "RP-02B">>
+/* <<audio ":all" stop>><<audio "RP-01" play>> */
+<main>
+<div id="mount"></div> 
+Felix, keeper of the Maze, and small dragon, here at your service.
+
+
+I’m opening up the City to you, a City you’ve never experienced before, and its secrets too. For the City is full of treasure. Not the kind of treasure that glitters in candlelight, but something more precious: stories, and the people who carry them. 
+
+You’re now in Dragontime. Past present and future happening all at once. Two thousand years of messy, pulsing, fiery history since the Romans first called their new home Londinium. Almost as long as I’ve been alive. 
+
+You’ve opened up door #9 into the maze of adventures. 
+
+You’ll be led presently through the streets of the City by a guide from one of its many pasts or possible futures.
+
+If you follow them all the way along their adventure, I’ll be there to meet you near another door, opening into an amazing experience for you, hidden in one of the secret gems of the City.
+
+What kind of amazing experience? Well, it’s a surprise. Otherwise this wouldn’t be an adventure.
+
+Now are you playing this adventure solo or with a group?
+ 
+<div class="menu-wrapper">
+  <<button "Solo">><<set $prevpass to $passage>><<goto "RP-02A">><</button>>
+  
+  <<button "Group">><<set $prevpass to $passage>><<goto "RP-02B">><</button>></div>
+</main>
+<<include "footer">>
+
+:: RP-02A {"position":"448,476","size":"100,100"}
+<<set $passage to "RP-02A">><<set $nextpassage to "RP-03">>
+/* <<audio ":all" stop>><<audio "EI_02A" play>> */
+<main>
+<div id="mount"></div> 
+This adventure is perfect for a solo adventurer 
+<<button "Next">><<set $prevpass to $passage>><<goto "RP-03">><</button>>
+ 
+</main>
+<<include "footer">>
+
+:: RP-02B {"position":"448,476","size":"100,100"}
+<<set $passage to "RP-02B">><<set $nextpassage to "RP-03">>
+/* <<audio ":all" stop>><<audio "EI_02A" play>> */
+<main>
+<div id="mount"></div> 
+This is perfect for a group! If you’re playing on separate devices try to press your buttons at the same time to stay in sync.  
+
+<<button "Next">><<set $prevpass to $passage>><<goto "RP-03">><</button>>
+ 
+ 
+</main>
+<<include "footer">>
+
+:: RP-03 {"position":"448,476","size":"100,100"}
+<<set $passage to "RP-03.1">><<set $nextpassage to "RP-04">>
+/* <<audio ":all" stop>><<audio "EI_02A" play>> */
+<main>
+<div id="mount"></div> 
+You can always use the arrows or the replay button if you need to hear or read anything again. 
+
+I’ll provide maps when needed.
+
+And the "Take me to the end" button will skip the adventure and show you how to get to the surprise at the end.
+
+Are you ready?
+
+<<button "Yes!">><<set $prevpass to $passage>><<goto "RP-04">><</button>>
+ 
+ 
+</main>
+<<include "footer">>
+
+:: RP-04 {"position":"448,476","size":"100,100"}
+<<set $passage to "RP-04">><<set $nextpassage to "RP-05">><<audio ":all" stop>><main>
+Ok, I’m going to connect you now to my friend Katy. 
+
+She’s connecting from the year 1996, soon here to guide you.
+
+<<timed 8s>><<set $prevpass to $passage>><<goto "RP-05">><</timed>>
+
+</main>
+<<include "footer">>
 
 :: RP-05 {"position":"454,195","size":"100,100"}
 <<set $passage to "RP-05">><<set $nextpassage to "RP-06">>
@@ -582,20 +799,20 @@ $endMap
 Two thirds of it blazing for three days.<</type>><</replace>><</timed>>   
 <<timed 30s>><<replace "#mount">><<type 55ms>>Not that I want that to happen. Of course not. I love London. 
 
-I never felt like I belonged at home. It's not like I belong here either. It's just that nobody belongs here. So we all belong.<</type>><</replace>><</timed>> 
-<<timed 45s>>
+I never felt like I belonged at home. It's not like I belong here either. It's just that nobody belongs here. So we all belong.
+
 <div class = "menu-wrapper">
 <<button "I know what you mean">><<set $prevpass to $passage>><<goto "RP-06">><</button>>
 
 <<button "That’s not how I see it">><<set $prevpass to $passage>><<goto "RP-06">><</button>>
-</div>
-<</timed>>
+</div><</type>><</replace>><</timed>> 
+
 </main>
 <<include "footer">>
 
 
 :: RP-06 {"position":"454,323","size":"100,100"}
-<<set $passage to "RP-06">><<set $nextpassage to "RP-07">><<audio ":all" stop>><<audio "RP_06" play>><<set $map1 = setup.generateDirectionsMapWP([51.51029183629383, -0.08606857296172754],[51.51035944551418, -0.0871975864519973], "London Bridge")>>
+<<set $passage to "RP-06">><<set $nextpassage to "RP-06map">><<audio ":all" stop>><<audio "RP_06" play>>
 <main>
   <div id="mount"></div>
     
@@ -608,27 +825,40 @@ When London Bridge had houses and shops on it, and one before that, Londinium.
 
 What would I recognize of that if I had a time machine?<</type>><</replace>><</timed>>    
 <<timed 28s>><<replace "#mount">><<type 50ms>>Anyway, we'd better get moving. I'll be late for work.<</type>><</replace>><</timed>>    
-<<timed 33s>><<replace "#mount">><<type 50ms>>With the Church of St. Magnus the martyr (another of Wren's) on my left, I walk away from the monument on Monument Street, not taking my life into my own hands with the traffic of King William Street, but diligently walking over to the pedestrian crossing.<</type>><</replace>><</timed>>    
-<<timed 50s>><<replace "#mount">><<type 50ms>>Once across, I go left and then take a sharp right onto Arthur Street, which is almost a circle.<</type>><</replace>><</timed>> 
+<<timed 33s>><<replace "#mount">><<type 50ms>> I walk away from the monument on Monument Street, not taking my life into my own hands with the traffic of King William Street, but diligently walking over to the pedestrian crossing.
 
-<<timed 60s>><<replace "#mount">>$map1
+<<button "Show Map">><<set $prevpass to $passage>><<goto "RP-06map">><</button>><</type>><</replace>><</timed>>    
 
-<<button "At Arthur Street">><<set $prevpass to $passage>><<goto "RP-07">><</button>><</replace>><</timed>> 
-     
+
+
+
+
+
+</main>
+<<include "footer">>
+
+:: RP-06map {"position":"454,323","size":"100,100"}
+<<set $passage to "RP-06map">><<set $nextpassage to "RP-07">><<audio ":all" stop>><<set $map1 = setup.generateDirectionsMapWP([51.510189274066065, -0.08597039679889285],[51.5105447910118, -0.0884170486394508], "108 Cannon St, London EC4N 6EU")>>
+<main>
+Walk around the monument to the opposite side of the door out to the main road.
+Once at king William St turn Right and cross at the pedestrian crossing continue forward on Cannon Street. The third small road on you left is Laurence Pountney Hill, take a left there.
+
+<<button "I'm here">><<set $prevpass to $passage>><<goto "RP-07">><</button>>
+
+$map1
 
 </main>
 <<include "footer">>
 
 
 :: RP-07 {"position":"455,445","size":"100,100"}
-<<set $passage to "RP-07">><<set $nextpassage to "RP-08">><<audio ":all" stop>><<audio "RP_07" play>><<set $map2 = setup.generateDirectionsMap([51.51035944551418, -0.0871975864519973], [51.51116071917635, -0.08949355746559208])>>
+<<set $passage to "RP-07">><<set $nextpassage to "RP-07map">><<audio ":all" stop>><<audio "RP_07" play>>
 <main> <div id="mount"></div>
-  
-<<timed 0s>><<replace "#mount">><<type 50ms>>Another right onto Martin lane, then pass under the street lamp to Lawrence Pountney Hill. <</type>><</replace>><</timed>>    
-<<timed 7s>><<replace "#mount">><<type 50ms>>St. Lawrence pike new was once a church, but it was destroyed in great fire. And this one they didn't rebuild. All that's left is the name. <</type>><</replace>><</timed>>    
-<<timed 18s>><<replace "#mount">><<type 50ms>>I prefer to take the quiet route home, so I have a bit of time alone with my thoughts. <</type>><</replace>><</timed>>    
-<<timed 25s>><<replace "#mount">><<type 50ms>>I was in Turkey on a dig when I heard the news. In Antalya, the temple of Apollo. I got the first flight home but I couldn't stay there. <</type>><</replace>><</timed>>    
-<<timed 33.3s>><<replace "#mount">><<type 53ms>>Part of me felt like going back to Turkey after that, or somewhere else, somewhere even further. 
+
+<<timed 0s>><<replace "#mount">><<type 50ms>>St. Lawrence Pountney was once a church, but it was destroyed in Great Fire. And this one they didn't rebuild. All that's left is the name. <</type>><</replace>><</timed>>    
+<<timed 11s>><<replace "#mount">><<type 50ms>>I prefer to take the quiet route home, so I have a bit of time alone with my thoughts. <</type>><</replace>><</timed>>    
+<<timed 18s>><<replace "#mount">><<type 50ms>>I was in Turkey on a dig when I heard the news. In Antalya, the temple of Apollo. I got the first flight home but I couldn't stay there. <</type>><</replace>><</timed>>    
+<<timed 26.3s>><<replace "#mount">><<type 53ms>>Part of me felt like going back to Turkey after that, or somewhere else, somewhere even further. 
 
 There were projects in Mexico, Cambodia, but that felt childish, somehow. 
 
@@ -636,10 +866,20 @@ I'm almost 30 I thought I can't run away. But I can't be back there either. <</t
 <<timed 52s>><<replace "#mount">><<type 55ms>>So I ended up here. Seemed like a sensible sort of decision. 
 
 A grown-up job. A boring sensible job for a property developer in the City of London. <</type>><</replace>><</timed>>    
-<<timed 63s>><<replace "#mount">><<type 50ms>>Oh we'll go straight onto Gophir Lane here. I always think of a little animal when I pass along it. I've never looked up the origin of the name because I don't want to shatter that illusion. Then a right on Bush lane. <</type>><</replace>><</timed>> 
+<<timed 63s>><<replace "#mount">><<type 50ms>>Oh we'll go straight onto Gophir Lane here. I always think of a little animal when I pass along it. I've never looked up the origin of the name because I don't want to shatter that illusion. Then a right on Bush lane. 
 
-<<timed 78s>><<replace "#mount">>$map2
-<<button "At Bush Lane">><<set $prevpass to $passage>><<goto "RP-08">><</button>><</replace>><</timed>>
+<<button "Show map">><<set $prevpass to $passage>><<goto "RP-07map">><</button>><</type>><</replace>><</timed>> 
+
+</main>
+<<include "footer">>
+
+:: RP-07map {"position":"455,445","size":"100,100"}
+<<set $passage to "RP-07">><<set $nextpassage to "RP-08">><<audio ":all" stop>><<set $map2 = setup.generateDirectionsMap([51.5105447910118, -0.0884170486394508], [51.51088622238639, -0.08949578225943144])>>
+<main>
+Laurence Pountney Hill will turn right. Continue that way as the road changes name to Gofir Lane.
+
+$map2
+<<button "I'm here">><<set $prevpass to $passage>><<goto "RP-08">><</button>>
      
 
 </main>
@@ -647,7 +887,8 @@ A grown-up job. A boring sensible job for a property developer in the City of Lo
 
 
 :: RP-08 {"position":"455,560","size":"100,100"}
-<<set $passage to "RP-08">><<set $nextpassage to "RP-09">><<audio ":all" stop>><<audio "RP_08" play>><<set $map3 = setup.generateDirectionsMap([51.51116071917635, -0.08949355746559208], [51.51242937363779, -0.08875326774174161])>><main>
+<<set $passage to "RP-08">><<set $nextpassage to "RP-08map">><<audio ":all" stop>><<audio "RP_08" play>>
+<main>
   <div id="mount"></div>
 <<timed 0s>><<replace "#mount">><<type 53ms>>I say it's boring, I mean it often is, but every now and then you'll discover something pretty amazing. 
 
@@ -658,22 +899,26 @@ The first is a survey I'll do at my desk, the dullest part. <</type>><</replace>
 <<timed 20s>><<replace "#mount">><<type 50ms>>It's historical research to check if there's any reason to believe that the site could have historically significant items buried that we'd either be covering up or damaging by building there. <</type>><</replace>><</timed>>    
 <<timed 31s>><<replace "#mount">><<type 50ms>>Carefully cross Cannon Street here, to St Swithin's Lane. 
 
-Look out for the traffic. We'll keep on down St. Swithin's Lane for a bit when we're over. <</type>><</replace>><</timed>> 
+Look out for the traffic. We'll keep on down St. Swithin's Lane for a bit when we're over. 
 
-<<timed 43s>><<replace "#mount">>$map3
+<<button "Show Map">><<set $prevpass to $passage>><<goto "RP-08map">><</button>><</type>><</replace>><</timed>> 
 
-<<button "Across">><<set $prevpass to $passage>><<goto "RP-09">><</button>><</replace>><</timed>>
      
+</main>
+<<include "footer">>
 
+:: RP-08map {"position":"455,560","size":"100,100"}
+<<set $passage to "RP-08">><<set $nextpassage to "RP-09">><<audio ":all" stop>><<set $map3 = setup.generateDirectionsMap([51.51088622238639, -0.08949578225943144], [51.51197980787912, -0.08908646994976403])>><main>
+$map3
 
-
-
+<<button "Across">><<set $prevpass to $passage>><<goto "RP-09">><</button>>
+     
 </main>
 <<include "footer">>
 
 
 :: RP-09 {"position":"458,683","size":"100,100"}
-<<set $passage to "RP-09">><<set $nextpassage to "RP-10">><<audio ":all" stop>><<audio "RP_09" play>><<set $map4 = setup.generateDirectionsMap([51.51242937363779, -0.08875326774174161], [51.512755942991646, -0.08907766602607836])>>
+<<set $passage to "RP-09">><<set $nextpassage to "RP-09map">><<audio ":all" stop>><<audio "RP_09" play>>
 <main>
  <div id="mount"></div>
 
@@ -689,8 +934,10 @@ When a site comes up for development in the City of London, though, you can pret
 And if the Victorians built something, you can be sure they weren't particularly rigorous about checking what was lying beneath. <</type>><</replace>><</timed>> 
 <<timed 37s>><<replace "#mount">><<type 50ms>>That's exactly what happened with the girl. 
 
-Left here on Mansion House place. <</type>><</replace>><</timed>> 
-<<timed 47s>><<replace "#mount">>$map4<<button "At Mansion House Place">><<set $prevpass to $passage>><<goto "RP-10">><</button>><</replace>><</timed>>
+Left here on Mansion House place. 
+
+<<button "Show map">><<set $prevpass to $passage>><<goto "RP-09map">><</button>>
+<</type>><</replace>><</timed>>
      
 
 
@@ -699,9 +946,22 @@ Left here on Mansion House place. <</type>><</replace>><</timed>>
 </main>
 <<include "footer">>
 
+:: RP-09map {"position":"458,683","size":"100,100"}
+<<set $passage to "RP-09map">><<set $nextpassage to "RP-10">><<audio ":all" stop>><<set $map4 = setup.generateDirectionsMap([51.51280533182366, -0.0892264627624403], [51.51273596983896, -0.08889210226743346])>>
+<main>
+After the building with the big pillars, just before the main road, turn left onto Mansion House Place
+ 
+ <<button "At Mansion House Place">><<set $prevpass to $passage>><<goto "RP-10">><</button>>
+     
+ $map4
+
+
+</main>
+<<include "footer">>
+
 
 :: RP-10 {"position":"456,808","size":"100,100"}
-<<set $passage to "RP-10">><<set $nextpassage to "RP-11A">><<audio ":all" stop>><<audio "RP_10" play>><<set $map5 = setup.generateDirectionsMap([51.512755942991646, -0.08907766602607836], [51.51278944399552, -0.09011492250314354])>>
+<<set $passage to "RP-10">><<set $nextpassage to "RP-10map">><<audio ":all" stop>><<audio "RP_10" play>>
 <main>
  <div id="mount"></div>
   
@@ -709,12 +969,24 @@ Left here on Mansion House place. <</type>><</replace>><</timed>>
 <<timed 11s>><<replace "#mount">><<type 50ms>>And that's where I came in. I knew it was very likely I'd find some artifacts, probably Roman. 
 
 But I wasn't prepared for finding her. <</type>><</replace>><</timed>>    
-<<timed 22s>><<replace "#mount">><<type 50ms>>Take St. Stephen's Road to Walbrook - that's the name of one of the old London rivers, buried underground now. <</type>><</replace>><</timed>> 
+<<timed 22s>><<replace "#mount">><<type 50ms>>Take St. Stephen's Road to Walbrook - that's the name of one of the old London rivers, buried underground now. 
 
-<<timed 32s>><<replace "#mount">>$map5
-
-<<button "At Walbrook">><<set $prevpass to $passage>><<goto "RP-11A">><</button>><</replace>><</timed>>
+<<button "Show Map">><<set $prevpass to $passage>><<goto "RP-10map">><</button>><</type>><</replace>><</timed>>
      
+
+</main>
+<<include "footer">>
+
+:: RP-10map {"position":"456,808","size":"100,100"}
+<<set $passage to "RP-10map">><<set $nextpassage to "RP-11A">><<audio ":all" stop>><<set $map5 = setup.generateDirectionsMap([51.51273596983896, -0.08889210226743346], [51.51273919598025, -0.089915919291634])>>
+<main>
+
+As you come to the end, go left following St Stephens Row around the building. 
+Take an immediate left on Walbrook, you’ll see an over hanging Underground sign.
+
+$map5
+
+<<button "At Walbrook">><<set $prevpass to $passage>><<goto "RP-11A">><</button>>
 
 </main>
 <<include "footer">>
@@ -930,20 +1202,35 @@ Probably noble. <</type>><</replace>><</timed>>
 
 
 :: RP-16A {"position":"456,1536","size":"100,100"}
-<<set $passage to "RP-16A">><<set $nextpassage to "RP-17">><<audio ":all" stop>><<audio "RP_16A" play>>
+<<set $passage to "RP-16A">><<set $nextpassage to "RP-17map">><<audio ":all" stop>><<audio "RP_16A" play>>
 <main>
  <div id="mount"></div>
-<<timed 0s>><<replace "#mount">><<type 50ms>>When we're outside, let's take a right, then another right into the Bloomberg Arcade. <</type>><</replace>><</timed>> 
+<<timed 0s>><<replace "#mount">><<type 50ms>>When we're outside, let's take a right, then another right into the Bloomberg Arcade.
 
-<<timed 30s>><<set $prevpass to $passage>><<goto "RP-17">><</timed>>
+<<button "Show Map">><<set $prevpass to $passage>><<goto "RP-17map">><</button>> <</type>><</replace>><</timed>> 
+
+
     
+
+</main>
+<<include "footer">>
+
+:: RP-17map {"position":"458,683","size":"100,100"}
+<<set $passage to "RP-17map">><<set $nextpassage to "RP-17">><<audio ":all" stop>><<set $map4 = setup.generateDirectionsMap([51.51273435677022, -0.08992887899889573], [51.51264079856243, -0.09200761627559037])>>
+<main>
+Just before you reach the main road and the statue that looks like roots, there is a tight right - a passageway with silver bollards at the front. This is Bloomberg Arcade. Head down to come out the other end.
+ 
+ <<button "I'm here">><<set $prevpass to $passage>><<goto "RP-17">><</button>>
+     
+ $map4
+
 
 </main>
 <<include "footer">>
 
 
 :: RP-17 {"position":"455,1660","size":"100,100"}
-<<set $passage to "RP-17">><<audio ":all" stop>><<audio "RP_17" play>>
+<<set $passage to "RP-17">><<audio ":all" stop>><<audio "RP_17" play>><<set $nextpassage to "RP-19">>
 <main>
  <div id="mount"></div>
   
@@ -972,10 +1259,12 @@ How can there not be more time? <</type>><</replace>><</timed>>
 </div><</replace>><</timed>>
 
 
-
-
 </main>
-<<include "footersimple">>
+<<include "footer">>
+
+
+
+
 
 
 :: RP-18 {"position":"386,1788","size":"100,100"}
@@ -1004,18 +1293,29 @@ Let's get along.
 
 
 :: RP-19 {"position":"453,1921","size":"100,100"}
-<<set $passage to "RP-19">><<set $nextpassage to "RP-20">><<audio ":all" stop>><<audio "RP_19" play>><<set $map5 = setup.generateDirectionsMap([51.51278944399552, -0.09011492250314354], [51.51276879002211, -0.09282657323722317])>>
+<<set $passage to "RP-19">><<set $nextpassage to "RP-19map">><<audio ":all" stop>><<audio "RP_19" play>>
 <main>
  <div id="mount"></div>
   
 <<timed 0s>><<replace "#mount">><<type 50ms>>These streets would scare you, I think. 
 
 When I come home, everything seems so much smaller than I remember it. <</type>><</replace>><</timed>>    
-<<timed 11s>><<replace "#mount">><<type 50ms>>We're coming up to Queen Victoria Street. Let's go across that. <</type>><</replace>><</timed>> 
+<<timed 11s>><<replace "#mount">><<type 50ms>>We're coming up to Queen Victoria Street. Let's go across that.
 
-<<timed 22s>><<replace "#mount">>$map5
+<<button "Show map">><<set $prevpass to $passage>><<goto "RP-19map">><</button>><</type>><</replace>><</timed>> 
+     
 
-<<button "Across">><<set $prevpass to $passage>><<goto "RP-20">><</button>><</replace>><</timed>> 
+</main>
+<<include "footer">>
+
+:: RP-19map {"position":"453,1921","size":"100,100"}
+<<set $passage to "RP-19map">><<set $nextpassage to "RP-20">><<audio ":all" stop>><<set $map5 = setup.generateDirectionsMap([51.51264079856243, -0.09200761627559037], [51.51301353702901, -0.0935417397251851])>>
+<main>
+ <div id="mount"></div>
+
+$map5
+
+<<button "Across">><<set $prevpass to $passage>><<goto "RP-20">><</button>>
      
 
 </main>
@@ -1023,10 +1323,9 @@ When I come home, everything seems so much smaller than I remember it. <</type>>
 
 
 :: RP-20 {"position":"451,2045","size":"100,100"}
-<<set $passage to "RP-20">><<set $nextpassage to "RP-21">><<audio ":all" stop>><<audio "RP_20" play>><<set $map6 = setup.generateDirectionsMap([51.51276879002211, -0.09282657323722317], [51.513468414032424, -0.09346468720631472])>>
+<<set $passage to "RP-20">><<set $nextpassage to "RP-20map">><<audio ":all" stop>><<audio "RP_20" play>>
 <main>
  <div id="mount"></div>
-
    
 <<timed 0s>><<replace "#mount">><<type 50ms>>Knowing a place is knowing its back streets. 
 
@@ -1047,11 +1346,25 @@ I'd spend the whole night running after you every time you disappear. <</type>><
 So her being fined within the city limits suggests importance. Maybe her family were just rich. <</type>><</replace>><</timed>>    
 <<timed 65s>><<replace "#mount">><<type 55ms>>I don't blame anyone. I tried that young lad. Steven. He was devastated, I know. I don't think he believed me. I never looked for anyone to blame. <</type>><</replace>><</timed>>    
 <<timed 80s>><<replace "#mount">><<type 50ms>>I hope he's okay. I wish I had met him before. Like I'd seen you two together being happy, being young. Together. <</type>><</replace>><</timed>>    
-<<timed 91s>><<replace "#mount">><<type 50ms>>Let's not go too far down here. Take a left onto Bow lane. <</type>><</replace>><</timed>> 
+<<timed 91s>><<replace "#mount">><<type 50ms>>Let's not go too far down here. 
 
-<<timed 100s>><<replace "#mount">>$map6
+<<button "Show map">><<set $prevpass to $passage>><<goto "RP-20map">><</button>><</type>><</replace>><</timed>> 
 
-<<button "At Bow Lane">><<set $prevpass to $passage>><<goto "RP-21">><</button>><</replace>><</timed>>
+
+
+</main>
+<<include "footer">>
+
+:: RP-20map {"position":"451,2045","size":"100,100"}
+<<set $passage to "RP-20">><<set $nextpassage to "RP-21">><<audio ":all" stop>><<set $map6 = setup.generateDirectionsMap([51.51301353702901, -0.0935417397251851], [51.513371754692294, -0.0935003790026676])>>
+<main>
+
+Waiting St is the smaller street between Go Fallafel and Hamptons. You’ll see a statue of The Cordwainer.
+Take a Right on Bow Lane.
+
+ $map6
+
+<<button "At Bow Lane">><<set $prevpass to $passage>><<goto "RP-21">><</button>>
      
 
 
@@ -1062,7 +1375,7 @@ So her being fined within the city limits suggests importance. Maybe her family 
 
 
 :: RP-21 {"position":"451,2161","size":"100,100"}
-<<set $passage to "RP-21">><<set $nextpassage to "RP-22">><<audio ":all" stop>><<audio "RP_21" play>><<set $map7 = setup.generateDirectionsMap( [51.513468414032424, -0.09346468720631472], [51.51367154510121, -0.09382476836365314])>>
+<<set $passage to "RP-21">><<set $nextpassage to "RP-21map">><<audio ":all" stop>><<audio "RP_21" play>>
 <main>
  <div id="mount"></div>
 
@@ -1082,10 +1395,24 @@ And now they've taken her away too. <</type>><</replace>><</timed>>
 <<timed 45s>><<replace "#mount">><<type 50ms>>They'll find out more about her, I'm sure. 
 
 Put her on display in a museum. So she'll stop being mine as well. <</type>><</replace>><</timed>>    
-<<timed 54s>><<replace "#mount">><<type 50ms>>Turn into Bow Churchyard. <</type>><</replace>><</timed>> 
+<<timed 54s>><<replace "#mount">><<type 50ms>>Turn into Bow Churchyard. 
+
+<<button "Show Map">><<set $prevpass to $passage>><<goto "RP-21map">><</button>><</type>><</replace>><</timed>> 
 
 
-<<timed 57s>><<replace "#mount">>$map7<<button "At Bow Churchyard">><<set $prevpass to $passage>><<goto "RP-22">><</button>><</replace>><</timed>>
+
+
+</main>
+<<include "footer">>
+
+:: RP-21map {"position":"451,2161","size":"100,100"}
+<<set $passage to "RP-21map">><<set $nextpassage to "RP-22">><<audio ":all" stop>><<set $map7 = setup.generateDirectionsMap( [51.513371754692294, -0.0935003790026676], [51.51377930428683, -0.0936037807726224])>>
+<main>
+Left on Bow Church Yard
+
+ $map7
+ 
+ <<button "At Bow Churchyard">><<set $prevpass to $passage>><<goto "RP-22">><</button>>
      
 
 
