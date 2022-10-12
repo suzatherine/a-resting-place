@@ -249,6 +249,9 @@ align-items: flex-end
   display:flex
 }
 
+.nav-wrapper.end > .nav-item{
+justify-content: flex-end;
+}
 .nav-item.replay, .nav-item.end{
 justify-content: right
 }
@@ -610,78 +613,19 @@ You have two options:
 
 
 :: end {"position":"100,600","size":"100,100"}
-<main><<audio ":all" stop>><<set $endMap = setup.generateDirectionsMap([51.51377930428683, -0.0936037807726224],[51.51377930428683, -0.0936037807726224])>><<set $nextpassage to "RP_25">>
+<main><<audio ":all" stop>><<set $endMap = setup.generateDirectionsMap([51.510189274066065, -0.08597039679889285],[51.51377930428683, -0.0936037807726224])>><<set $nextpassage to "RP_25">>
 
 End location
 
 $endMap
 
-<<button "More Info">><<set $prevpass to $passage>><<goto "RP_25">><</button>>
+<<button "Next">><<set $prevpass to $passage>><<goto "RP_25">><</button>>
 </main>
 <<include "footer">>
 
 
 
-:: RP_25 {"position":"520,2113","size":"100,100"}
-<<set $passage to "RP_25">><<set $nextpassage to "RP_26">>
 
-<main>
-<div id="mount"></div>
-I think it won’t be so quiet inside today. Do you want to go in and see?
-
-Head into the church, and then down into the crypt. 
-
-The steward in blue will show you where to go.
-
-And please show them this <<button "key">><<set $prevpass to $passage>><<goto "RP_26">><</button>>
-</main>
-<<include "footer">>
-
-:: RP_26 {"position":"520,2113","size":"100,100"}
-<<set $passage to "RP_26">><<set $nextpassage to "EI_23A">>
- <main>
-<div class="key-wrapper glowing"><img src="./assets/keys-34.png"></div>
-
-</main>
-<<include "footerkey">>
-
-
-::  RP_26adventures {"position":"520,2113","size":"100,100"}
-<<set $passage to "RP_26adventures">><<audio ":all" stop>><main><h3>Start a new adventure...</h3>
-<div class="choices">
-<div class="adventure-wrapper"><h3>Animals in the City </h3><div class="adv-item"><div>Family Focused
-3 min walk away</div><<button "Show Map">><<set $prevpass to $passage>><<goto "RP_27A">><</button>></div></div>
-
-<div class="adventure-wrapper"><h3>The Artful Dodges Again </h3><div class="adv-item"><div>Family Focused
-6 min walk away</div><<button "Show Map">><<set $prevpass to $passage>><<goto "RP_27C">><</button>></div></div>
-</div>
-
-<div class="adventure-wrapper"><h3>The Future Gondolier </h3><div class="adv-item"><div>Family Focused
-7 min walk away</div><<button "Show Map">><<set $prevpass to $passage>><<goto "RP_27B">><</button>></div></div>
-</div>
-</main>
-<<include "footerkey">>
-
-:: RP_27A {"position":"520,2113","size":"100,100"}
-<<set $passage to "RP_27A">><<set $map = setup.generateDirectionsMap([51.51377930428683, -0.0936037807726224], [51.51204089721224, -0.09085841779191389])>><main>
-<h2>Animals in the City</h2>
-$map
-
-</main>
-<<include "footerlost">>
-
-:: RP_27B {"position":"520,2113","size":"100,100"}
-<<set $passage to "RP_27B">><<set $map = setup.generateDirectionsMap([51.51377930428683, -0.0936037807726224], [51.51221299705639, -0.09830573558176264])>><main>
-<h2>The Future Gondolier</h2>
-$map
-
-</main>
-<<include "footerlost">>
-
-:: RP_27C {"position":"520,2113","size":"100,100"}
-<<set $passage to "RP_27C">><<set $map = setup.generateDirectionsMap([51.51377930428683, -0.0936037807726224], [51.5135358882094, -0.08796951779088134])>><main>
-<h2>The Artful Dodges Again</h2>
-$map
 
 </main>
 <<include "footerlost">>
@@ -691,9 +635,9 @@ $map
 <div class="nav-item"><<button "Start again">><<goto "landing">><</button>></div>
 </footer>
 
+
 :: footerkey
-<footer><div class="nav-item"><<button "Key">><<goto "RP_26">><</button>> </div><div class="nav-item"><<button "Start again">><<goto "landing">><</button>></div>
-<div class="nav-item end"><<button "Try another adventure">><<set $prevpass to $passage>><<goto "RP_26adventures">><</button>></div></footer>
+<footer><div class="nav-wrapper"><div class="nav-item"><<button "<">><<goto $prevpass>><</button>></div><div class="nav-item"><<button "Start again">><<goto "landing">><</button>></div></div><div class="nav-wrapper end"><div class="nav-item"><<button "Key">><<set $prevpass to $passage>><<goto "RP_26">><</button>> </div><div class="nav-item"><<button "Try another adventure">><<set $prevpass to $passage>><<goto "RP_26adventures">><</button>></div></div></footer>
 
 
 :: footer {"position":"99,493","size":"100,100"}
@@ -1657,3 +1601,64 @@ Either way, it's time for me to stop. <</type>><</replace>><</timed>>
 <<include "footer">>
 
 
+:: RP_25 {"position":"520,2113","size":"100,100"}
+<<set $passage to "RP_25">><<set $nextpassage to "RP_26">>
+
+<main>
+<div id="mount"></div>
+I think it won’t be so quiet inside today. Do you want to go in and see?
+
+Head into the church, and then down into the crypt. 
+
+The steward in blue will show you where to go.
+
+And please show them this <<button "key">><<set $prevpass to $passage>><<goto "RP_26">><</button>>
+</main>
+<<include "footer">>
+
+:: RP_26 {"position":"520,2113","size":"100,100"}
+<<set $passage to "RP_26">><<set $nextpassage to "EI_23A">>
+ <main>
+<div class="key-wrapper glowing"><img src="./assets/keys-34.png"></div>
+
+</main>
+<<include "footerkey">>
+
+
+::  RP_26adventures {"position":"520,2113","size":"100,100"}
+<<set $passage to "RP_26adventures">><<audio ":all" stop>><main>
+<h3>Start a new adventure...</h3>
+<div class="choices">
+<div class="adventure-wrapper"><h3>Animals in the City </h3><div class="adv-item"><div>Family Focused
+3 min walk away</div><<button "Show Map">><<set $prevpass to $passage>><<goto "RP_27A">><</button>></div></div>
+
+<div class="adventure-wrapper"><h3>The Artful Dodges Again </h3><div class="adv-item"><div>Family Focused
+6 min walk away</div><<button "Show Map">><<set $prevpass to $passage>><<goto "RP_27C">><</button>></div></div>
+
+
+<div class="adventure-wrapper"><h3>The Future Gondolier </h3><div class="adv-item"><div>Family Focused
+7 min walk away</div><<button "Show Map">><<set $prevpass to $passage>><<goto "RP_27B">><</button>></div></div>
+</div>
+</main>
+<<include "footerkey">>
+
+:: RP_27A {"position":"520,2113","size":"100,100"}
+<<set $passage to "RP_27A">><<set $map = setup.generateDirectionsMap([51.51377930428683, -0.0936037807726224], [51.51204089721224, -0.09085841779191389])>><main>
+<h2>Animals in the City</h2>
+$map
+
+</main>
+<<include "footerlost">>
+
+:: RP_27B {"position":"520,2113","size":"100,100"}
+<<set $passage to "RP_27B">><<set $map = setup.generateDirectionsMap([51.51377930428683, -0.0936037807726224], [51.51221299705639, -0.09830573558176264])>><main>
+<h2>The Future Gondolier</h2>
+$map
+
+</main>
+<<include "footerlost">>
+
+:: RP_27C {"position":"520,2113","size":"100,100"}
+<<set $passage to "RP_27C">><<set $map = setup.generateDirectionsMap([51.51377930428683, -0.0936037807726224], [51.5135358882094, -0.08796951779088134])>><main>
+<h2>The Artful Dodges Again</h2>
+$map
