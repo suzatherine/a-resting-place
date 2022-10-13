@@ -560,6 +560,8 @@ setup.checkForRepeats = (array,element) => {
 
 
 :: StoryInit {"position":"100,100","size":"100,100"}
+<<cacheaudio "RP_01" "https://magic.fra1.cdn.digitaloceanspaces.com/tgksnd/RP/RP_01.mp3">>
+<<cacheaudio "RP_04" "https://magic.fra1.cdn.digitaloceanspaces.com/tgksnd/RP/RP-04.mp3">>
 <<cacheaudio "RP_05" "https://magic.fra1.cdn.digitaloceanspaces.com/tgksnd/RP/RP_05.mp3">>
 
 <<cacheaudio "RP_06" "https://magic.fra1.cdn.digitaloceanspaces.com/tgksnd/RP/RP_06.mp3">>
@@ -585,6 +587,10 @@ setup.checkForRepeats = (array,element) => {
 <<cacheaudio "RP_22" "https://magic.fra1.cdn.digitaloceanspaces.com/tgksnd/RP/RP_22.mp3">>
 <<cacheaudio "RP_23" "https://magic.fra1.cdn.digitaloceanspaces.com/tgksnd/RP/RP_23.mp3">>
 <<cacheaudio "RP_24" "https://magic.fra1.cdn.digitaloceanspaces.com/tgksnd/RP/RP_24.mp3">>
+<<cacheaudio "RP_25" "https://magic.fra1.cdn.digitaloceanspaces.com/tgksnd/RP/RP_25.mp3">>
+<<cacheaudio "solo" "https://magic.fra1.cdn.digitaloceanspaces.com/tgksnd/felix/XX_greatsolo.mp3">>
+<<cacheaudio "03" "https://magic.fra1.cdn.digitaloceanspaces.com/tgksnd/felix/XX_03.mp3">>
+<<cacheaudio "perfectgroup" "https://magic.fra1.cdn.digitaloceanspaces.com/tgksnd/felix/XX_02_perfectgroup.mp3">>
 <<waitforaudio>>
 
 
@@ -614,7 +620,7 @@ You have two options:
 
 
 :: landing {"position":"450,50","size":"100,100"}
-<<set $passage to "landing">>
+<<set $passage to "landing">><<audio ":all" stop>>
 <main>
 <h2>A Resting Place</h2>
 
@@ -662,23 +668,37 @@ $endMap
 
 :: RP-01 {"position":"449,226","size":"100,100"}
 <<set $passage to "RP-01">><<set $nextpassage to "RP-02B">>
-/* <<audio ":all" stop>><<audio "RP-01" play>> */
-<main>
-<div id="mount"></div> 
-Felix, keeper of the Maze, and small dragon, here at your service.
+<<audio ":all" stop>><<audio "RP_01" play>>
+<main><div id="mount"></div> 
+<<timed 2s>><<replace "#mount">>
+  Felix, keeper of the Maze, and small dragon, here at your service.
+  <</replace>>
+<</timed>>
+  <<timed 8s>><<replace "#mount">>
+  I'm opening up the City to you, a City you've never experienced before, and its secrets too. 
+  
+  For the City is full of treasure. 
+  <</replace>>
+<</timed>>
+  <<timed 16s>><<replace "#mount">> Not the kind of treasure that glitters in candlelight, but something more precious: stories, and the people who carry them. 
+  <</replace>>
+<</timed>>
 
+<<timed 24s>><<replace "#mount">>You're now in Dragontime. Past present and future happening all at once. Two thousand years of messy, pulsing, fiery history since the Romans first called their new home Londinium. Almost as long as I've been alive. 
+ <</replace>>
+<</timed>>
 
-I’m opening up the City to you, a City you’ve never experienced before, and its secrets too. For the City is full of treasure. Not the kind of treasure that glitters in candlelight, but something more precious: stories, and the people who carry them. 
+<<timed 38s>><<replace "#mount">>You've opened up door #5 into the maze of adventures. 
 
-You’re now in Dragontime. Past present and future happening all at once. Two thousand years of messy, pulsing, fiery history since the Romans first called their new home Londinium. Almost as long as I’ve been alive. 
+You'll be led presently through the streets of the City by a guide from one of its many pasts or possible futures.
+ <</replace>>
+<</timed>>
 
-You’ve opened up door #9 into the maze of adventures. 
+<<timed 47s>><<replace "#mount">>If you follow them all the way along their adventure, I'll be there to meet you near another door, opening into an amazing experience for you, hidden in one of the secret gems of the City.
+ <</replace>>
+<</timed>>
 
-You’ll be led presently through the streets of the City by a guide from one of its many pasts or possible futures.
-
-If you follow them all the way along their adventure, I’ll be there to meet you near another door, opening into an amazing experience for you, hidden in one of the secret gems of the City.
-
-What kind of amazing experience? Well, it’s a surprise. Otherwise this wouldn’t be an adventure.
+<<timed 57s>><<replace "#mount">>What kind of amazing experience? Well, it's a surprise. Otherwise this wouldn't be an adventure.
 
 Now are you playing this adventure solo or with a group?
  
@@ -686,12 +706,14 @@ Now are you playing this adventure solo or with a group?
   <<button "Solo">><<set $prevpass to $passage>><<goto "RP-02A">><</button>>
   
   <<button "Group">><<set $prevpass to $passage>><<goto "RP-02B">><</button>></div>
+   <</replace>>
+<</timed>>
 </main>
 <<include "footer">>
 
 :: RP-02A {"position":"448,476","size":"100,100"}
 <<set $passage to "RP-02A">><<set $nextpassage to "RP-03">>
-/* <<audio ":all" stop>><<audio "EI_02A" play>> */
+<<audio ":all" stop>><<audio "solo" play>>
 <main>
 <div id="mount"></div> 
 This adventure is perfect for a solo adventurer 
@@ -702,7 +724,7 @@ This adventure is perfect for a solo adventurer
 
 :: RP-02B {"position":"448,476","size":"100,100"}
 <<set $passage to "RP-02B">><<set $nextpassage to "RP-03">>
-/* <<audio ":all" stop>><<audio "EI_02A" play>> */
+<<audio ":all" stop>><<audio "perfectgroup" play>>
 <main>
 <div id="mount"></div> 
 This is perfect for a group! If you’re playing on separate devices try to press your buttons at the same time to stay in sync.  
@@ -715,7 +737,7 @@ This is perfect for a group! If you’re playing on separate devices try to pres
 
 :: RP-03 {"position":"448,476","size":"100,100"}
 <<set $passage to "RP-03.1">><<set $nextpassage to "RP-04">>
-/* <<audio ":all" stop>><<audio "EI_02A" play>> */
+<<audio ":all" stop>><<audio "03" play>>
 <main>
 <div id="mount"></div> 
 You can always use the arrows or the replay button if you need to hear or read anything again. 
@@ -733,7 +755,8 @@ Are you ready?
 <<include "footer">>
 
 :: RP-04 {"position":"448,476","size":"100,100"}
-<<set $passage to "RP-04">><<set $nextpassage to "RP-05">><<audio ":all" stop>><main>
+<<set $passage to "RP-04">><<set $nextpassage to "RP-05">><<audio ":all" stop>><<audio ":all" stop>><<audio "RP_04" play>>
+<main>
 Ok, I’m going to connect you now to my friend Katy. 
 
 She’s connecting from the year 1996, soon here to guide you.
@@ -1614,7 +1637,7 @@ Either way, it's time for me to stop. <</type>><</replace>><</timed>>
 
 
 :: RP_25 {"position":"520,2113","size":"100,100"}
-<<set $passage to "RP_25">><<set $nextpassage to "RP_26">>
+<<set $passage to "RP_25">><<set $nextpassage to "RP_26">><<audio ":all" stop>><<audio "RP_25" play>>
 
 <main>
 <div id="mount"></div>
