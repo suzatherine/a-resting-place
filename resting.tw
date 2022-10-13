@@ -14,9 +14,10 @@ A Resting Place
 
 :: Story Stylesheet [stylesheet]
 @import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600&display=swap");
+
 @font-face {
   font-family: "Big John";
-  src: url("/assets/fonts/bigjohn.otf") format("opentype");
+  src: url("./assets/fonts/bigjohn.otf") format("opentype");
 }
 
 /* GENERICS */
@@ -559,31 +560,31 @@ setup.checkForRepeats = (array,element) => {
 
 
 :: StoryInit {"position":"100,100","size":"100,100"}
-<<cacheaudio "RP_05" "https://www.youhavefoundconey.net/tgksnd/RP/RP_05.mp3">>
+<<cacheaudio "RP_05" "https://magic.fra1.cdn.digitaloceanspaces.com/tgksnd/RP/RP_05.mp3">>
 
-<<cacheaudio "RP_06" "https://www.youhavefoundconey.net/tgksnd/RP/RP_06.mp3">>
-<<cacheaudio "RP_07" "https://www.youhavefoundconey.net/tgksnd/RP/RP_07.mp3">>
-<<cacheaudio "RP_08" "https://www.youhavefoundconey.net/tgksnd/RP/RP_08.mp3">>
-<<cacheaudio "RP_09" "https://www.youhavefoundconey.net/tgksnd/RP/RP_09.mp3">>
-<<cacheaudio "RP_10" "https://www.youhavefoundconey.net/tgksnd/RP/RP_10.mp3">>
-<<cacheaudio "RP_11" "https://www.youhavefoundconey.net/tgksnd/RP/RP_11.mp3">>
-<<cacheaudio "RP_11A" "https://www.youhavefoundconey.net/tgksnd/RP/RP_11A.mp3">>
-<<cacheaudio "RP_11B" "https://www.youhavefoundconey.net/tgksnd/RP/RP_11B.mp3">>
-<<cacheaudio "RP_12" "https://www.youhavefoundconey.net/tgksnd/RP/RP_12.mp3">>
-<<cacheaudio "RP_13" "https://www.youhavefoundconey.net/tgksnd/RP/RP_13.mp3">>
-<<cacheaudio "RP_14" "https://www.youhavefoundconey.net/tgksnd/RP/RP_14.mp3">>
-<<cacheaudio "RP_15A" "https://www.youhavefoundconey.net/tgksnd/RP/RP_15A.mp3">>
-<<cacheaudio "RP_15B" "https://www.youhavefoundconey.net/tgksnd/RP/RP_15B.mp3">>
-<<cacheaudio "RP_16A" "https://www.youhavefoundconey.net/tgksnd/RP/RP_16A.mp3">>
-<<cacheaudio "RP_16B" "https://www.youhavefoundconey.net/tgksnd/RP/RP_16B.mp3">>
-<<cacheaudio "RP_17" "https://www.youhavefoundconey.net/tgksnd/RP/RP_17.mp3">>
-<<cacheaudio "RP_18" "https://www.youhavefoundconey.net/tgksnd/RP/RP_18.mp3">>
-<<cacheaudio "RP_19" "https://www.youhavefoundconey.net/tgksnd/RP/RP_19.mp3">>
-<<cacheaudio "RP_20" "https://www.youhavefoundconey.net/tgksnd/RP/RP_20.mp3">>
-<<cacheaudio "RP_21" "https://www.youhavefoundconey.net/tgksnd/RP/RP_21.mp3">>
-<<cacheaudio "RP_22" "https://www.youhavefoundconey.net/tgksnd/RP/RP_22.mp3">>
-<<cacheaudio "RP_23" "https://www.youhavefoundconey.net/tgksnd/RP/RP_23.mp3">>
-<<cacheaudio "RP_24" "https://www.youhavefoundconey.net/tgksnd/RP/RP_24.mp3">>
+<<cacheaudio "RP_06" "https://magic.fra1.cdn.digitaloceanspaces.com/tgksnd/RP/RP_06.mp3">>
+<<cacheaudio "RP_07" "https://magic.fra1.cdn.digitaloceanspaces.com/tgksnd/RP/RP_07.mp3">>
+<<cacheaudio "RP_08" "https://magic.fra1.cdn.digitaloceanspaces.com/tgksnd/RP/RP_08.mp3">>
+<<cacheaudio "RP_09" "https://magic.fra1.cdn.digitaloceanspaces.com/tgksnd/RP/RP_09.mp3">>
+<<cacheaudio "RP_10" "https://magic.fra1.cdn.digitaloceanspaces.com/tgksnd/RP/RP_10.mp3">>
+<<cacheaudio "RP_11" "https://magic.fra1.cdn.digitaloceanspaces.com/tgksnd/RP/RP_11.mp3">>
+<<cacheaudio "RP_11A" "https://magic.fra1.cdn.digitaloceanspaces.com/tgksnd/RP/RP_11A.mp3">>
+<<cacheaudio "RP_11B" "https://magic.fra1.cdn.digitaloceanspaces.com/tgksnd/RP/RP_11B.mp3">>
+<<cacheaudio "RP_12" "https://magic.fra1.cdn.digitaloceanspaces.com/tgksnd/RP/RP_12.mp3">>
+<<cacheaudio "RP_13" "https://magic.fra1.cdn.digitaloceanspaces.com/tgksnd/RP/RP_13.mp3">>
+<<cacheaudio "RP_14" "https://magic.fra1.cdn.digitaloceanspaces.com/tgksnd/RP/RP_14.mp3">>
+<<cacheaudio "RP_15A" "https://magic.fra1.cdn.digitaloceanspaces.com/tgksnd/RP/RP_15A.mp3">>
+<<cacheaudio "RP_15B" "https://magic.fra1.cdn.digitaloceanspaces.com/tgksnd/RP/RP_15B.mp3">>
+<<cacheaudio "RP_16A" "https://magic.fra1.cdn.digitaloceanspaces.com/tgksnd/RP/RP_16A.mp3">>
+<<cacheaudio "RP_16B" "https://magic.fra1.cdn.digitaloceanspaces.com/tgksnd/RP/RP_16B.mp3">>
+<<cacheaudio "RP_17" "https://magic.fra1.cdn.digitaloceanspaces.com/tgksnd/RP/RP_17.mp3">>
+<<cacheaudio "RP_18" "https://magic.fra1.cdn.digitaloceanspaces.com/tgksnd/RP/RP_18.mp3">>
+<<cacheaudio "RP_19" "https://magic.fra1.cdn.digitaloceanspaces.com/tgksnd/RP/RP_19.mp3">>
+<<cacheaudio "RP_20" "https://magic.fra1.cdn.digitaloceanspaces.com/tgksnd/RP/RP_20.mp3">>
+<<cacheaudio "RP_21" "https://magic.fra1.cdn.digitaloceanspaces.com/tgksnd/RP/RP_21.mp3">>
+<<cacheaudio "RP_22" "https://magic.fra1.cdn.digitaloceanspaces.com/tgksnd/RP/RP_22.mp3">>
+<<cacheaudio "RP_23" "https://magic.fra1.cdn.digitaloceanspaces.com/tgksnd/RP/RP_23.mp3">>
+<<cacheaudio "RP_24" "https://magic.fra1.cdn.digitaloceanspaces.com/tgksnd/RP/RP_24.mp3">>
 <<waitforaudio>>
 
 
@@ -615,8 +616,9 @@ You have two options:
 :: landing {"position":"450,50","size":"100,100"}
 <<set $passage to "landing">>
 <main>
+<h2>A Resting Place</h2>
 
-<<button "Start">><<set $prevpass to $passage>><<goto "RP-05">><</button>>
+<<button "Start">><<set $prevpass to $passage>><<goto "RP-01">><</button>>
      
 
 </main>
