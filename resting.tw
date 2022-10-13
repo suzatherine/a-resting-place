@@ -14,6 +14,10 @@ A Resting Place
 
 :: Story Stylesheet [stylesheet]
 @import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600&display=swap");
+@font-face {
+  font-family: "Big John";
+  src: url("/assets/fonts/bigjohn.otf") format("opentype");
+}
 
 /* GENERICS */
 html {
@@ -379,6 +383,12 @@ display: flex;
 
 .adventure-title{
   margin-block-end:0;
+  text-align:center
+}
+
+.endpoint {
+  font-family: "Big John";
+  font-size:3rem;
   text-align:center
 }
 
@@ -1619,8 +1629,9 @@ And please show them this <<button "key">><<set $prevpass to $passage>><<goto "R
 :: RP_26 {"position":"520,2113","size":"100,100"}
 <<set $passage to "RP_26">><<set $nextpassage to "EI_23A">>
  <main>
-<div class="key-wrapper glowing"><img src="./assets/keys-34.png"></div>
+<div class="key-wrapper glowing"><img src="./assets/StMaryLeBow.png"></div>
 
+<h2 class="endpoint">St Mary Le Bow</h2>
 </main>
 <<include "footerkey">>
 

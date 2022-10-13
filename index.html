@@ -99,6 +99,10 @@ var LZString={_keyStr:"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz01234
 		<div id="init-loading"><div>Loading&hellip;</div></div>
 	</div>
 	<!-- UUID://60C15F40-312E-4797-80C6-5FA092D050AC// --><tw-storydata name="A Resting Place" startnode="6" creator="Tweego" creator-version="2.1.1+81d1d71" ifid="60C15F40-312E-4797-80C6-5FA092D050AC" zoom="0.6" format="SugarCube" format-version="2.36.1" options="" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600&display=swap");
+@font-face {
+  font-family: "Big John";
+  src: url("/assets/fonts/bigjohn.otf") format("opentype");
+}
 
 /* GENERICS */
 html {
@@ -464,6 +468,12 @@ display: flex;
 
 .adventure-title{
   margin-block-end:0;
+  text-align:center
+}
+
+.endpoint {
+  font-family: "Big John";
+  font-size:3rem;
   text-align:center
 }
 
@@ -1529,8 +1539,9 @@ And please show them this &lt;&lt;button &quot;key&quot;&gt;&gt;&lt;&lt;set $pre
 &lt;/main&gt;
 &lt;&lt;include &quot;footer&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="46" name="RP_26" tags="" position="520,2113" size="100,100">&lt;&lt;set $passage to &quot;RP_26&quot;&gt;&gt;&lt;&lt;set $nextpassage to &quot;EI_23A&quot;&gt;&gt;
  &lt;main&gt;
-&lt;div class=&quot;key-wrapper glowing&quot;&gt;&lt;img src=&quot;./assets/keys-34.png&quot;&gt;&lt;/div&gt;
+&lt;div class=&quot;key-wrapper glowing&quot;&gt;&lt;img src=&quot;./assets/StMaryLeBow.png&quot;&gt;&lt;/div&gt;
 
+&lt;h2 class=&quot;endpoint&quot;&gt;St Mary Le Bow&lt;/h2&gt;
 &lt;/main&gt;
 &lt;&lt;include &quot;footerkey&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="47" name="RP_26adventures" tags="" position="520,2113" size="100,100">&lt;&lt;set $passage to &quot;RP_26adventures&quot;&gt;&gt;&lt;&lt;audio &quot;:all&quot; stop&gt;&gt;&lt;main&gt;
 &lt;h3&gt;Start a new adventure...&lt;/h3&gt;
